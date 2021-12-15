@@ -1,0 +1,20 @@
+{
+  "name": "story-bootstrap-lerna",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Minh Nguyễn",
+  "scripts": {
+    "build": "lerna run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "lerna"
+  ],
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "typescript": "^4.5.4"
+  }
+}
