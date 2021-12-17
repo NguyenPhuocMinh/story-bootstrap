@@ -5,16 +5,49 @@
   "author": "Minh Nguyễn",
   "scripts": {
     "build": "lerna run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "lerna run --parallel watch",
+    "test": "jest",
+    "prepare": "husky install",
+    "lint": "eslint --config ./.eslintrc --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
+    "lint:fix": "eslint --config ./.eslintrc --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
+    "format": "prettier --config ./.prettierrc --check \"./packages/**/src/\" \"./examples/**/src//\"",
+    "format:fix": "prettier --config ./.prettierrc --write \"./packages/**/src/\" \"./examples/**/src//\""
   },
   "keywords": [
     "react",
     "lerna"
   ],
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.4.1",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.5",
+    "lerna": "^4.0.0",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.1"
   },
   "dependencies": {
     "typescript": "^4.5.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix",
+      "git add"
+    ],
+    "*.{json,css,md}": [
+      "prettier",
+      "git add"
+    ]
   }
 }
