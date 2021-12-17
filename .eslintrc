@@ -7,6 +7,9 @@
   },
   "env": {
     "browser": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true,
     "es2021": true,
     "jest": true
   },
@@ -14,8 +17,19 @@
     "airbnb",
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:promise/recommended"
+  ],
+  "plugins": [
+    "react",
+    "import",
+    "promise",
+    "prettier",
+    "react-hooks",
+    "@typescript-eslint"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -25,13 +39,35 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "no-console": [
       "warn",
       {
         "allow": ["time", "timeEnd", "info", "error", "warn"]
       }
-    ]
+    ],
+    "no-use-before-define": "off",
+    // prettier
+    "prettier/prettier": [
+      "warn",
+      {},
+      {
+        "usePrettierrc": true
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "@material-ui/core",
+            "importNames": ["makeStyles", "createMuiTheme"],
+            "message": "Please import from @material-ui/core/styles instead. See https://material-ui.com/guides/minimizing-bundle-size/#option-2 for more information"
+          }
+        ]
+      }
+    ],
+    "no-redeclare": "off",
+    "@typescript-eslint/no-redeclare": ["error"]
   }
 }
