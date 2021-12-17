@@ -8,10 +8,10 @@
     "watch": "lerna run --parallel watch",
     "test": "jest",
     "prepare": "husky install",
-    "lint": "eslint --config ./.eslintrc --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
-    "lint:fix": "eslint --config ./.eslintrc --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
-    "format": "prettier --config ./.prettierrc --check \"./packages/**/src/\" \"./examples/**/src//\"",
-    "format:fix": "prettier --config ./.prettierrc --write \"./packages/**/src/\" \"./examples/**/src//\""
+    "lint": "eslint --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
+    "lint:fix": "eslint --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
+    "format": "prettier --check \"./packages/**/src/\" \"./examples/**/src//\"",
+    "format:fix": "prettier --write \"./packages/**/src/\" \"./examples/**/src//\""
   },
   "keywords": [
     "react",
@@ -42,12 +42,10 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --cache --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{json,css,md}": [
-      "prettier",
-      "git add"
+      "prettier --write"
     ]
   }
 }
