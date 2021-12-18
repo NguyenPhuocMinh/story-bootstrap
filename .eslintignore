@@ -1,3 +1,6 @@
-build/
-node_modules/
-packages/**/node_modules/
+**/dist/**
+**/build/**
+**/node_modules/**
+**/*.test.{js,jsx,ts,tsx}
+**/*.spec.{js,jsx,ts,tsx}
+**/config-overrides.js
