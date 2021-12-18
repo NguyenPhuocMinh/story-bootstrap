@@ -26,6 +26,3 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 /packages/**/package-lock.json
-
-# IDEs
-.vscode

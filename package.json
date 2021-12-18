@@ -1,6 +1,5 @@
 {
   "name": "story-bootstrap-lerna",
-  "version": "1.0.0",
   "private": true,
   "author": "Minh Nguyễn",
   "scripts": {
@@ -10,8 +9,8 @@
     "prepare": "husky install",
     "lint": "eslint --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
-    "format": "prettier --check \"./packages/**/src/\" \"./examples/**/src//\"",
-    "format:fix": "prettier --write \"./packages/**/src/\" \"./examples/**/src//\"",
+    "format": "prettier --config ./.prettierrc --check \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
+    "format:fix": "prettier --config ./.prettierrc --write \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
     "run-demo": "cd examples/demo npm start"
   },
   "keywords": [
@@ -31,7 +30,6 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
@@ -45,6 +43,10 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
-    "*.{json,css,md}": "prettier ./.prettierrc --write"
-  }
+    "*.{js,jsx,ts,tsx,json,css,md}": "prettier --write"
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ]
 }

@@ -1,7 +1,18 @@
 {
   "name": "sb-core",
   "version": "0.1.0",
-  "private": true,
+  "main": "lib/index",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
+  "sideEffects": false,
+  "author": "Minh Nguyễn",
+  "homepage": "https://github.com/NguyenPhuocMinh/story-bootstrap#readme",
+  "files": [
+    "*.md",
+    "lib",
+    "esm",
+    "src"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
