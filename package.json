@@ -11,7 +11,8 @@
     "lint": "eslint --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
     "format": "prettier --check \"./packages/**/src/\" \"./examples/**/src//\"",
-    "format:fix": "prettier --write \"./packages/**/src/\" \"./examples/**/src//\""
+    "format:fix": "prettier --write \"./packages/**/src/\" \"./examples/**/src//\"",
+    "run-demo": "cd examples/demo npm start"
   },
   "keywords": [
     "react",
