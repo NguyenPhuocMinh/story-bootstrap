@@ -7,6 +7,6 @@
     "declarationMap": true,
     "allowJs": false
   },
-  "include": ["src"],
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js"]
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.test.js"],
+  "include": ["src"]
 }

@@ -1,5 +1,6 @@
 **/dist/**
 **/build/**
 **/node_modules/**
-**/*.test.{js,jsx,ts,tsx}
-**/*.spec.{js,jsx,ts,tsx}
+packages/**/src/*.spec.js
+packages/**/tests/*.test.js
+packages/**/tests/*.spec.js

@@ -5,29 +5,35 @@
   "scripts": {
     "build": "lerna run build",
     "watch": "lerna run --parallel watch",
-    "test": "jest",
+    "test": "jest --runInBand",
+    "test:watch": "jest --runInBand --watch",
     "prepare": "husky install",
-    "lint": "eslint --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
+    "lint:check": "eslint --color --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
-    "format": "prettier --config ./.prettierrc --check \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
-    "format:fix": "prettier --config ./.prettierrc --write \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
-    "run-demo": "cd examples/demo npm start"
+    "format:check": "prettier --check \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
+    "format:fix": "prettier --write \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
+    "run-demo": "cd examples/demo && npm start"
   },
   "keywords": [
+    "lerna",
     "react",
-    "lerna"
+    "typescript"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
     "@types/jest": "^27.0.3",
     "@types/react": "^17.0.37",
     "@types/react-redux": "^7.1.20",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^8.5.0",
-    "eslint-config-airbnb": "^19.0.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.3.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
@@ -36,17 +42,18 @@
     "jest": "^27.4.5",
     "lerna": "^4.0.0",
     "lint-staged": "^12.1.2",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.2"
   },
   "dependencies": {
     "typescript": "^4.5.4"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
-    "*.{js,jsx,ts,tsx,json,css,md}": "prettier --write"
-  },
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ]
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
+      "prettier --write",
+      "jest --bail --findRelatedTests",
+      "git add"
+    ]
+  }
 }
