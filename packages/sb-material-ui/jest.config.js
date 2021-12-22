@@ -1,12 +1,15 @@
-const base = require('../../jest.config.base.js');
-const packageMeta = require('./package.json');
+const base = require('../../jest.config');
+const chalkConfig = require('../../helpers/chalk.config');
+const packageMeta = require('./package');
 
 module.exports = {
   ...base,
   displayName: {
-    name: packageMeta.name,
-    color: 'yellow'
+    color: chalkConfig.magenta,
+    name: packageMeta.name
   },
   rootDir: '../..',
-  testMatch: [`<rootDir>/packages/${packageMeta.name}/**/*.test.js`]
+  roots: [`<rootDir>/packages/${packageMeta.name}`],
+  testMatch: ['/**/*.(test|spec).tsx'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts']
 };

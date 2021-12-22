@@ -4,10 +4,6 @@
  */
 
 module.exports = {
-  displayName: {
-    name: 'CLIENT',
-    color: 'blue'
-  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -24,7 +20,15 @@ module.exports = {
   collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  // collectCoverageFrom: [
+  //   'packages/**/*.js',
+  //   '!packages/**/coverage/**/*.js',
+  //   '!packages/**/dist/**/*.js',
+  //   '!packages/**/*.test.tsx',
+  //   '!packages/**/jest.*.js',
+  //   '!packages/tests/**/*.tsx',
+  //   '!packages/mocks/**/*.js'
+  // ],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
@@ -93,16 +97,45 @@ module.exports = {
   preset: 'ts-jest',
 
   // Run tests from one or more projects
-  // projects: undefined,
+  projects: [
+    '<rootDir>/packages/*/jest.config.js'
+    // {
+    //   preset: 'ts-jest',
+    //   displayName: 'sb-core',
+    //   testPathIgnorePatterns: ['<rootDir>/packages/sb-core/node_modules/'],
+    //   moduleFileExtensions: ['js', 'json', 'jsx', 'tsx'],
+    //   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+    //   testEnvironment: 'jsdom',
+    //   testMatch: ['<rootDir>/packages/sb-core/tests/*.(spec|test).tsx']
+    // },
+    // {
+    //   preset: 'ts-jest',
+    //   displayName: 'sb-material-ui',
+    //   testPathIgnorePatterns: ['/node_modules/'],
+    //   moduleFileExtensions: ['js', 'json', 'jsx', 'tsx'],
+    //   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+    //   testEnvironment: 'jsdom',
+    //   testMatch: ['<rootDir>/packages/sb-material-ui/tests/*.(spec|test).tsx']
+    // },
+    // {
+    //   preset: 'ts-jest',
+    //   displayName: 'story-bootstrap',
+    //   testPathIgnorePatterns: ['/node_modules/'],
+    //   moduleFileExtensions: ['js', 'json', 'jsx', 'tsx'],
+    //   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+    //   testEnvironment: 'jsdom',
+    //   testMatch: ['<rootDir>/packages/story-bootstrap/tests/*.(spec|test).tsx']
+    // }
+  ],
 
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  // resetMocks: false,
+  resetMocks: true,
 
   // Reset the module registry before running each individual test
-  // resetModules: false,
+  resetModules: true,
 
   // A path to a custom resolver
   // resolver: undefined,
@@ -114,7 +147,7 @@ module.exports = {
   // rootDir: undefined,
 
   // A list of paths to directories that Jest should use to search for files in
-  roots: ['<rootDir>/packages'],
+  roots: ['<rootDir>'],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -144,10 +177,13 @@ module.exports = {
   // testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  // testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/(build|dist|node_modules)/',
+    '<rootDir>/packages/*/(build|dist|node_modules)/'
+  ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
-  testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.(tsx?)$',
+  // testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.tsx?$',
 
   // This option allows the use of a custom results processor
   // testResultsProcessor: undefined,

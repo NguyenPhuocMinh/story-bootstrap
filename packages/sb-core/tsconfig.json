@@ -4,9 +4,14 @@
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
-    "declarationMap": true,
-    "allowJs": false
+    "declarationMap": true
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.test.js"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.spec.js",
+    "**/*.test.js",
+    "**/*.test.tsx"
+  ],
   "include": ["src"]
 }
