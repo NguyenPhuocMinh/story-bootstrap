@@ -1,17 +1,18 @@
+/*
+ * For a detailed explanation regarding each configuration property, visit:
+ * https://www.typescriptlang.org/docs/handbook/compiler-options.html
+ */
+
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "allowJs": false,
+    "noImplicitAny": true
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/*.spec.js",
-    "**/*.test.js",
-    "**/*.test.tsx"
-  ],
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.test.tsx"],
   "include": ["src"]
 }

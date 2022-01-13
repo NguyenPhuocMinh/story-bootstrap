@@ -3,8 +3,12 @@
   "private": true,
   "author": "Minh Nguyễn",
   "scripts": {
-    "build": "lerna run build",
-    "watch": "lerna run --parallel watch",
+    "lerna:publish": "lerna publish",
+    "lerna:build": "lerna run build",
+    "lerna:watch": "lerna run --parallel watch",
+    "lerna:bootstrap": "lerna bootstrap",
+    "lerna:clean": "lerna clean -y",
+    "lerna:version": "lerna version --conventional-commits --create-release github",
     "test": "jest --runInBand",
     "test:watch": "jest --runInBand --watch",
     "prepare": "husky install",
@@ -50,7 +54,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
+      "eslint --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
       "prettier --write",
       "jest --bail --findRelatedTests",
       "git add"

@@ -5,7 +5,7 @@ const packageMeta = require('./package');
 module.exports = {
   ...base,
   displayName: {
-    color: chalkConfig.magenta,
+    color: chalkConfig.yellow,
     name: packageMeta.name
   },
   rootDir: '../..',
