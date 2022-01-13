@@ -45,7 +45,7 @@ module.exports = {
   // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: ['json', 'text', 'lcov', 'clover'],
+  coverageReporters: ['lcov'],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -97,36 +97,7 @@ module.exports = {
   preset: 'ts-jest',
 
   // Run tests from one or more projects
-  projects: [
-    '<rootDir>/packages/*/jest.config.js'
-    // {
-    //   preset: 'ts-jest',
-    //   displayName: 'sb-core',
-    //   testPathIgnorePatterns: ['<rootDir>/packages/sb-core/node_modules/'],
-    //   moduleFileExtensions: ['js', 'json', 'jsx', 'tsx'],
-    //   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
-    //   testEnvironment: 'jsdom',
-    //   testMatch: ['<rootDir>/packages/sb-core/tests/*.(spec|test).tsx']
-    // },
-    // {
-    //   preset: 'ts-jest',
-    //   displayName: 'sb-material-ui',
-    //   testPathIgnorePatterns: ['/node_modules/'],
-    //   moduleFileExtensions: ['js', 'json', 'jsx', 'tsx'],
-    //   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
-    //   testEnvironment: 'jsdom',
-    //   testMatch: ['<rootDir>/packages/sb-material-ui/tests/*.(spec|test).tsx']
-    // },
-    // {
-    //   preset: 'ts-jest',
-    //   displayName: 'story-bootstrap',
-    //   testPathIgnorePatterns: ['/node_modules/'],
-    //   moduleFileExtensions: ['js', 'json', 'jsx', 'tsx'],
-    //   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
-    //   testEnvironment: 'jsdom',
-    //   testMatch: ['<rootDir>/packages/story-bootstrap/tests/*.(spec|test).tsx']
-    // }
-  ],
+  projects: ['<rootDir>/packages/*/jest.config.js'],
 
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
