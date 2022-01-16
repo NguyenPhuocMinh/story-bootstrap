@@ -98,4 +98,6 @@ export interface InitialValuesProps {
 export interface FormHelperProps {
   initialValues: InitialValuesProps;
   formContent: any;
+  handleSubmit: (values: any) => void;
+  validationSchema?: (values: any) => void;
 }

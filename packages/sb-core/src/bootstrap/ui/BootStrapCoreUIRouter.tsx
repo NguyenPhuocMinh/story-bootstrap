@@ -94,7 +94,7 @@ const BootStrapCoreUIRouter = (props: BootStrapCoreUIRouterProps) => {
       <Routes>
         <Route
           path="/"
-          element={renderProps =>
+          element={(renderProps: any) =>
             createElement(
               layout,
               {

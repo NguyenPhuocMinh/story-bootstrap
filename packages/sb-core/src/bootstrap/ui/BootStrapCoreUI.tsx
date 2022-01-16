@@ -27,7 +27,7 @@ const BootStrapCoreUI = (props: BootStrapCoreUIProps) => {
     <Routes>
       <Route
         path="/login"
-        element={renderProps =>
+        element={(renderProps: any) =>
           createElement(loginPage, {
             ...renderProps,
             title,
@@ -37,7 +37,7 @@ const BootStrapCoreUI = (props: BootStrapCoreUIProps) => {
       />
       <Route
         path="/register"
-        element={renderProps =>
+        element={(renderProps: any) =>
           createElement(registerPage, {
             ...renderProps,
             title,
@@ -47,7 +47,7 @@ const BootStrapCoreUI = (props: BootStrapCoreUIProps) => {
       />
       <Route
         path="/"
-        element={renderProps => (
+        element={(renderProps: any) => (
           <BootStrapCoreUIRouter
             catchAll={catchAll}
             dashboard={dashboard}
