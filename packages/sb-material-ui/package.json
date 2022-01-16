@@ -34,6 +34,7 @@
     "@types/lodash": "^4.14.178",
     "@types/react-router": "^5.1.17",
     "@types/react-router-dom": "^5.3.2",
+    "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-country-flag": "^3.0.2",
     "react-dom": "^17.0.2",
@@ -43,7 +44,8 @@
     "react-router-dom": "^6.2.1",
     "redux": "^4.1.2",
     "rimraf": "^3.0.2",
-    "sb-core": "../sb-core"
+    "sb-core": "../sb-core",
+    "yup": "^0.32.11"
   },
   "peerDependencies": {
     "@mui/icons-material": "^5.2.5",

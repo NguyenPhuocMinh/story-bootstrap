@@ -16,7 +16,7 @@ export interface TitleProps {
 }
 
 export type CreateIconProps = {
-  icon?: string;
+  icon: string | any;
   registerIcons: RegisterIconProps;
 };
 
@@ -89,4 +89,13 @@ export interface SettingHelperProps {
   anchor?: AnchorTypes;
   toggleDrawer: () => void;
   changeTheme: () => void;
+}
+
+export interface InitialValuesProps {
+  [key: string]: any;
+}
+
+export interface FormHelperProps {
+  initialValues: InitialValuesProps;
+  formContent: any;
 }

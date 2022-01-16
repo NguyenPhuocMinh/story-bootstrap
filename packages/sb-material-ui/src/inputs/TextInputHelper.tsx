@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextField } from '@mui/material';
-
-// hooks
-import { useTranslate } from '../../hooks';
+// core
+import { useTranslate } from 'sb-core';
 // material ui
+import { TextField } from '@mui/material';
 
 const TextInputHelper = props => {
   const {
@@ -70,7 +69,7 @@ TextInputHelper.propTypes = {
   margin: PropTypes.oneOf(['none', 'dense', 'normal']),
   startAdornment: PropTypes.any,
   endAdornment: PropTypes.any,
-  rows: PropTypes.oneOf(PropTypes.string || PropTypes.number),
+  rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   values: PropTypes.object,
   handleChange: PropTypes.func,
   handleBlur: PropTypes.func,
