@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 // router dom
 import { Route, Routes } from 'react-router-dom';

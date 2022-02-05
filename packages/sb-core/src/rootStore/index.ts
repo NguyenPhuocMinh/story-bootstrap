@@ -1,4 +1,4 @@
-import rootStore from './root/rootStore';
+import rootStore from './rootStore';
 
 export * from './actions';
 export * from './reducers';

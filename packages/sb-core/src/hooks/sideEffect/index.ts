@@ -1,3 +1,4 @@
 import useNotify from './useNotify';
+import useRedirect from './useRedirect';
 
-export { useNotify };
+export { useNotify, useRedirect };

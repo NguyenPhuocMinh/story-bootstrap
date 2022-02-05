@@ -1,3 +1,3 @@
-import TextInputHelper from './TextInputHelper';
+import TextInputBootStrap from './TextInputBootStrap';
 
-export { TextInputHelper };
+export { TextInputBootStrap };

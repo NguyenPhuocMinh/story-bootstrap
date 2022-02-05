@@ -1,3 +1,3 @@
-import SimpleFormHelper from './SimpleFormHelper';
+import SimpleFormBootStrap from './SimpleFormBootStrap';
 
-export { SimpleFormHelper };
+export { SimpleFormBootStrap };

@@ -1,7 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-// history
-import { createHashHistory } from 'history';
+import { useContext } from 'react';
 // redux
 import { Provider, ReactReduxContext } from 'react-redux';
 // i18n
@@ -11,44 +8,30 @@ import { rootStore } from '../../rootStore';
 // contexts
 import AuthContext from '../auth/AuthCoreContext';
 import { BootStrapCoreContextProps } from '../../types';
-// import { ConnectedRouter } from '../../routes';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const BootStrapCoreContext = (props: BootStrapCoreContextProps) => {
-  const {
-    authProvider,
-    i18nProvider,
-    children,
-    history,
-    customReducers,
-    initialState
-  } = props;
+  const { authProvider, i18nProvider, children, customReducers, initialState } =
+    props;
 
   const reduxIsAlreadyInitialized = !!useContext(ReactReduxContext);
 
-  const finalHistory = history || createHashHistory();
+  const renderCore = () => {
+    return (
+      <AuthContext.Provider value={authProvider}>
+        <I18nextProvider i18n={i18nProvider}>
+          <Router>{children}</Router>
+        </I18nextProvider>
+      </AuthContext.Provider>
+    );
+  };
 
-  const renderCore = () => (
-    <AuthContext.Provider value={authProvider}>
-      <I18nextProvider i18n={i18nProvider}>
-        <ConnectedRouter history={finalHistory}>{children}</ConnectedRouter>
-      </I18nextProvider>
-    </AuthContext.Provider>
-  );
-
-  const [store] = useState(() =>
-    !reduxIsAlreadyInitialized
-      ? rootStore({
-          customReducers,
-          initialState,
-          history: finalHistory
-        })
-      : undefined
-  );
+  const store = rootStore({
+    customReducers,
+    initialState
+  });
 
   if (reduxIsAlreadyInitialized) {
-    if (!history) {
-      throw new Error('Missing history props');
-    }
     return renderCore();
   } else {
     return <Provider store={store}>{renderCore()}</Provider>;

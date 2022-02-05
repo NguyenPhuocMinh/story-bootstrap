@@ -1,4 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+// story-bootstrap
+import {
+  AppBarBootStrap,
+  PopupBootStrap,
+  SettingBootStrap,
+  ProfileBootStrap,
+  useTranslate,
+  useGetIdentity
+} from 'story-bootstrap';
+// material ui
 import GithubIcon from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -14,16 +24,20 @@ import {
   CircularProgress
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+// lodash
 import { get } from 'lodash';
-import {
-  AppBarHelper,
-  PopupHelper,
-  SettingHelper,
-  ProfileHelper,
-  useTranslate,
-  useGetIdentity
-} from '../core';
 import { changeTheme, changeLanguage } from '../customStore/customActions';
+
+const languages = [
+  {
+    name: 'en',
+    countryCode: 'US'
+  },
+  {
+    name: 'vn',
+    countryCode: 'VN'
+  }
+];
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -35,6 +49,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
+  const { location, navigate } = props;
+  console.log('🚀 ~ file: AppBar.js ~ line 52 ~ AppBarLayout ~ props', props);
   // hooks
   const classes = useStyles();
   const { translate } = useTranslate();
@@ -78,7 +94,7 @@ const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
   };
 
   return (
-    <AppBarHelper position="fixed" open={isOpen}>
+    <AppBarBootStrap position="fixed" open={isOpen}>
       <Toolbar>
         <IconButton
           color="inherit"
@@ -135,7 +151,8 @@ const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
                 <TranslateIcon />
               </IconButton>
             </Tooltip>
-            <PopupHelper
+            <PopupBootStrap
+              languages={languages}
               open={openPopupLanguage}
               anchorEl={anchorLanguage}
               handleClose={handleCloseChangeLng}
@@ -152,7 +169,7 @@ const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
                 <SettingsIcon />
               </IconButton>
             </Tooltip>
-            <SettingHelper
+            <SettingBootStrap
               open={openSetting}
               anchor="right"
               toggleDrawer={handleChangeSetting}
@@ -180,15 +197,17 @@ const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
                 </Typography>
               </IconButton>
             </Tooltip>
-            <ProfileHelper
+            <ProfileBootStrap
               open={openPopupProfile}
               anchorEl={anchorProfile}
               handleClose={handleCloseChangeProfile}
+              location={location}
+              navigate={navigate}
             />
           </Box>
         </Box>
       </Toolbar>
-    </AppBarHelper>
+    </AppBarBootStrap>
   );
 };
 

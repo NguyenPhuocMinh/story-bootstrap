@@ -2,6 +2,8 @@ import { useCallback } from 'react';
 
 import useAuthProvider from './useAuthProvider';
 
+type GetPermissions = (params?: any) => Promise<any>;
+
 const getPermissionsWithoutProvider = () => Promise.resolve([]);
 
 /**
@@ -15,7 +17,7 @@ const getPermissionsWithoutProvider = () => Promise.resolve([]);
  * offering state handling.
  *
  */
-const useGetPermissions = () => {
+const useGetPermissions = (): GetPermissions => {
   const authProvider = useAuthProvider();
   const getPermissions = useCallback(
     (params = {}) => authProvider.getPermissions(params),

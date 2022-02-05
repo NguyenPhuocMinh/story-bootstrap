@@ -1,33 +1,30 @@
-import React from 'react';
-import { BootStrapProps } from 'sb-core';
+import { BootStrapCoreProps } from 'sb-core';
 
-import BootStrapStoryUI from './BootStrapStoryUI';
 import BootStrapStoryContext from './BootStrapStoryContext';
+import BootStrapStoryUI from './BootStrapStoryUI';
 
-const BootStrapStory = (props: BootStrapProps) => {
+const BootStrapStory = (props: BootStrapCoreProps) => {
   const {
+    layout,
     authProvider,
     catchAll,
     children,
     customReducers,
     dashboard,
-    history,
     i18nProvider,
     initialState,
-    layout,
     loading,
     loginPage,
     registerPage,
     logoutButton,
     theme,
-    title = 'Demo Basic React'
+    title = 'BootStrap Story'
   } = props;
 
   return (
     <BootStrapStoryContext
       authProvider={authProvider}
       i18nProvider={i18nProvider}
-      history={history}
       customReducers={customReducers}
       initialState={initialState}
     >

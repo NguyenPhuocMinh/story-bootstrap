@@ -1,9 +1,10 @@
-import React from 'react';
+import packageMeta from '../../package.json';
+import { LayoutBootStrap } from 'story-bootstrap';
 // redux
 import { useSelector } from 'react-redux';
+// components
 import AppBar from './AppBar';
 import Menu from './Menu';
-import { LayoutHelper } from '../core';
 // themes
 import { lightTheme, darkTheme } from '../themes';
 
@@ -13,12 +14,13 @@ const Layout = props => {
   const theme = themeStore === 'light' ? lightTheme : darkTheme;
 
   return (
-    <LayoutHelper
+    <LayoutBootStrap
       {...props}
       appBar={AppBar}
       menu={Menu}
       theme={theme}
       drawerWidth={300}
+      version={packageMeta.version}
     />
   );
 };

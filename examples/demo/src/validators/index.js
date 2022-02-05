@@ -1,40 +1,41 @@
-import * as Yup from 'yup';
+import { objectYup, stringYup, refYup } from 'story-bootstrap';
 
 export const validateUserLogin = translate => {
-  return Yup.object().shape({
-    email: Yup.string()
+  return objectYup().shape({
+    email: stringYup()
       .required(translate('validation.required'))
       .email(translate('validation.users.email')),
-    password: Yup.string().required(translate('validation.required'))
-    // .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+    password: stringYup().required(translate('validation.required'))
+    // .matches(
+    //   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
     //   translate('validation.users.password')
-    // ),
+    // )
   });
 };
 
 export const validateUserRegister = translate => {
-  return Yup.object().shape({
-    firstName: Yup.string()
+  return objectYup().shape({
+    firstName: stringYup()
       .required(translate('validation.required'))
       .min(2, translate('validation.minLength', { min: 2 }))
       .max(10, translate('validation.maxLength', { max: 10 })),
-    lastName: Yup.string()
+    lastName: stringYup()
       .required(translate('validation.required'))
       .min(2, translate('validation.minLength', { min: 2 }))
       .max(10, translate('validation.maxLength', { max: 10 })),
-    email: Yup.string()
+    email: stringYup()
       .required(translate('validation.required'))
       .email(translate('validation.users.email')),
-    password: Yup.string()
+    password: stringYup()
       .required(translate('validation.required'))
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
         translate('validation.users.password')
       ),
-    passwordConfirm: Yup.string()
+    passwordConfirm: stringYup()
       .required(translate('validation.required'))
       .oneOf(
-        [Yup.ref('password'), null],
+        [refYup('password'), null],
         translate('validation.users.password_confirm')
       )
   });

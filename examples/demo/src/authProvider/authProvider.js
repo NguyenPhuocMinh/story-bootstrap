@@ -6,12 +6,7 @@ import {
   prepareResponse,
   getProfile
 } from './authHandler';
-import {
-  firebaseAuth,
-  googleProvider,
-  GoogleAuthProvider,
-  signInWithPopup
-} from '../firebase';
+import { firebaseAuth, googleProvider, signInWithPopup } from '../firebase';
 import constants from '../constants';
 
 const authProvider = {
@@ -72,6 +67,10 @@ const authProvider = {
   },
   checkAuth: () => {
     const accessToken = localStorage.getItem('access_token');
+    console.log(
+      '🚀 ~ file: authProvider.js ~ line 74 ~ accessToken',
+      accessToken
+    );
     return !isEmpty(accessToken)
       ? Promise.resolve({ accessToken })
       : Promise.reject();
@@ -104,11 +103,6 @@ const authProvider = {
 
       return response;
     } catch (err) {
-      const credential = GoogleAuthProvider.credentialFromError(err);
-      console.log(
-        '🚀 ~ file: AuthProvider.js ~ line 100 ~ loginWithGoogle: ~ credential',
-        credential
-      );
       return err.message;
     }
   },
