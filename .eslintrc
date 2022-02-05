@@ -46,7 +46,17 @@
     "no-restricted-imports": [
       "error",
       {
-        "patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
+        "patterns": [
+          {
+            "group": ["!@mui/*"],
+            "message": "Please use import { element } from '@mui/material' instead."
+          },
+          {
+            "group": ["@mui/material/test-utils/*"],
+            "message": "Import of @mui/material/test-utils/* private modules not allowed."
+          }
+        ]
+        // "Please import from @mui/material instead. See https://mui.com/guides/minimizing-bundle-size/#option-1 for more information"
       }
     ],
     "no-redeclare": "off",
@@ -64,11 +74,23 @@
     ],
     "no-var-requires": "off",
     "@typescript-eslint/no-var-requires": "off",
+    "no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-empty-interface": "off",
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
+    ],
     "no-console": [
       "warn",
       {
         "allow": ["time", "timeEnd", "info", "error", "warn"]
       }
-    ]
+    ],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/no-children-prop": "off"
   }
 }
