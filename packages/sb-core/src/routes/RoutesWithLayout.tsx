@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, createElement } from 'react';
+import { Children, cloneElement, createElement } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { RoutesWithLayoutProps } from '../types';
 import WithPermissions from '../hoc/auth/WithPermissions';
@@ -7,34 +7,34 @@ import Redirection from './Redirection';
 const defaultAuthParams = { route: 'dashboard' };
 
 const RoutesWithLayout = (props: RoutesWithLayoutProps) => {
-  const { dashboard, title, catchAll, children } = props;
+  const { dashboard, title, catchAll, children, location, navigate } = props;
+
   const childrenAsArray = Children.toArray(children);
-  const firstChild = childrenAsArray.length > 0 ? childrenAsArray[0] : null;
+  const firstChild =
+    childrenAsArray.length > 0 ? (childrenAsArray[0] as any) : null;
 
   return (
     <Routes>
-      {Children.map(children, child => (
-        <Route
-          key={child.props.name}
-          path={`/${child.props.name}`}
-          element={props =>
-            cloneElement(child, {
-              intent: 'route',
-              ...props
-            })
-          }
-        />
-      ))}
+      {Children.map(children, child => {
+        return (
+          <Route
+            key={child.props.name}
+            path={`/${child.props.name}`}
+            element={cloneElement(child, { intent: 'route', ...props })}
+          />
+        );
+      })}
       {dashboard ? (
         <Route
           path="/"
-          element={routeProps => (
+          element={
             <WithPermissions
               authParams={defaultAuthParams}
               component={dashboard}
-              {...routeProps}
+              location={location}
+              navigate={navigate}
             />
-          )}
+          }
         />
       ) : firstChild ? (
         <Route
@@ -43,12 +43,12 @@ const RoutesWithLayout = (props: RoutesWithLayoutProps) => {
         />
       ) : null}
       <Route
-        element={routeProps =>
-          createElement(catchAll, {
-            ...routeProps,
-            title
-          })
-        }
+        path="*"
+        element={createElement(catchAll, {
+          title,
+          location,
+          navigate
+        })}
       />
     </Routes>
   );

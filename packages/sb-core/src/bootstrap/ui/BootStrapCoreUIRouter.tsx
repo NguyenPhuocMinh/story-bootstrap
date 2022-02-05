@@ -1,4 +1,4 @@
-import React, { Children, useEffect, cloneElement, createElement } from 'react';
+import { Children, useEffect, cloneElement, createElement } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // hooks
 import {
@@ -9,15 +9,11 @@ import {
   useTimeout
 } from '../../hooks';
 import { RoutesWithLayout } from '../../routes';
-import {
-  BootStrapCoreUIRouterProps,
-  ResolveResourceFunction,
-  ResourceElement
-} from '../../types';
+import { BootStrapCoreUIRouterProps } from '../../types';
 
 const BootStrapCoreUIRouter = (props: BootStrapCoreUIRouterProps) => {
-  const getPermissions = useGetPermissions();
   const doLogout = useLogout();
+  const getPermissions = useGetPermissions();
   const { authenticated } = useAuthState();
   const oneSecondHasPassed = useTimeout(1000);
   const [computedChildren, setComputedChildren] = useSafeSetState([]);
@@ -32,28 +28,25 @@ const BootStrapCoreUIRouter = (props: BootStrapCoreUIRouterProps) => {
     try {
       const permissions = await getPermissions();
 
-      const resolveChildren = props.children as ResolveResourceFunction; // type casting
+      const resolveChildren = props.children as any; // type casting
 
       const childrenFuncResult = resolveChildren(permissions);
-      if (childrenFuncResult as Promise<ResourceElement[]>) {
-        (childrenFuncResult as Promise<ResourceElement[]>).then(
-          resolvedChildren =>
-            setComputedChildren(
-              resolvedChildren
-                .filter(child => child)
-                .map(child => ({
-                  ...child,
-                  props: {
-                    ...child.props,
-                    key: child.props.name
-                  }
-                }))
-            )
+      if (childrenFuncResult) {
+        childrenFuncResult.then((resolvedChildren: any[]) =>
+          setComputedChildren(
+            resolvedChildren
+              .filter(child => child)
+              .map(child => ({
+                ...child,
+                props: {
+                  ...child.props,
+                  key: child.props.name
+                }
+              }))
+          )
         );
       } else {
-        setComputedChildren(
-          (childrenFuncResult as ResourceElement[]).filter(child => child)
-        );
+        setComputedChildren(childrenFuncResult.filter((child: any) => child));
       }
     } catch (error) {
       console.error(error);
@@ -69,7 +62,9 @@ const BootStrapCoreUIRouter = (props: BootStrapCoreUIRouterProps) => {
     loading: LoadingPage,
     logout,
     theme,
-    title
+    title,
+    location,
+    navigate
   } = props;
 
   if (
@@ -80,7 +75,7 @@ const BootStrapCoreUIRouter = (props: BootStrapCoreUIRouterProps) => {
     return (
       <Routes>
         {oneSecondHasPassed && (
-          <Route key="loading" element={() => <LoadingPage theme={theme} />} />
+          <Route key="loading" element={<LoadingPage theme={theme} />} />
         )}
       </Routes>
     );
@@ -90,37 +85,36 @@ const BootStrapCoreUIRouter = (props: BootStrapCoreUIRouterProps) => {
     typeof children === 'function' ? computedChildren : children;
 
   return (
-    <div>
-      <Routes>
-        <Route
-          path="/"
-          element={renderProps =>
-            createElement(
-              layout,
-              {
-                dashboard,
-                logout,
-                theme,
-                title,
-                ...renderProps
-              },
-              <RoutesWithLayout
-                catchAll={catchAll}
-                dashboard={dashboard}
-                title={title}
-              >
-                {Children.map(childrenToRender, child =>
-                  cloneElement(child, {
-                    key: child.props.name,
-                    intent: 'route'
-                  })
-                )}
-              </RoutesWithLayout>
-            )
-          }
-        />
-      </Routes>
-    </div>
+    <Routes>
+      <Route
+        path="*"
+        element={createElement(
+          layout,
+          {
+            dashboard,
+            logout,
+            theme,
+            title,
+            location,
+            navigate
+          },
+          <RoutesWithLayout
+            catchAll={catchAll}
+            dashboard={dashboard}
+            title={title}
+            location={location}
+            navigate={navigate}
+          >
+            {Children.map(childrenToRender, child => {
+              return cloneElement(child, {
+                key: child.props.name,
+                intent: 'route'
+              });
+            })}
+          </RoutesWithLayout>
+        )}
+      />
+    </Routes>
   );
 };
 

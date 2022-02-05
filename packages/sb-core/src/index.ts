@@ -1,3 +1,5 @@
+import i18n from 'i18next';
+
 export * from './bootstrap';
 export * from './resource';
 export * from './contexts';
@@ -8,10 +10,8 @@ export * from './routes';
 export * from './rootStore';
 export * from './constants';
 /**
- * Data types
+ * data types
  */
 export * from './types';
-/**
- * react-i18next
- */
 export * from 'react-i18next';
+export { i18n };

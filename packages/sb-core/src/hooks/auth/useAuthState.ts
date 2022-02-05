@@ -10,7 +10,7 @@ interface AuthState {
   loading: boolean;
   loaded: boolean;
   authenticated?: boolean;
-  accessToken: string;
+  token?: string;
 }
 
 /**

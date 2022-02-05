@@ -1,11 +1,8 @@
-import React, { FC } from 'react';
 import { BootStrapCoreContext, BootStrapCoreContextProps } from 'sb-core';
 
-const BootStrapStoryContext: FC<BootStrapCoreContextProps> = props => {
+const BootStrapStoryContext = (props: BootStrapCoreContextProps) => {
   return <BootStrapCoreContext {...props} />;
 };
-
-BootStrapStoryContext.defaultProps = {};
 
 BootStrapStoryContext.displayName = 'BootStrapStoryContext';
 

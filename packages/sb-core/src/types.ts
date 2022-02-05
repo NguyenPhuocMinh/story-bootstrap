@@ -1,20 +1,6 @@
-import { FC, ReactElement, ComponentType, ReactNode } from 'react';
-import { RouterProps } from 'react-router-dom';
-import { History } from 'history';
-import { i18n } from 'i18next';
+import { FC, ReactElement, ComponentType, ReactNode, Component } from 'react';
 import { ThemeOptions } from '@mui/material';
 import { AUTH_TYPES } from './constants';
-
-/**
- * i18nProvider types
- */
-
-export interface I18nProvider extends i18n {}
-
-export interface TranslateProps {
-  translate: any;
-  i18n: i18n;
-}
 
 /**
  * authProvider types
@@ -42,7 +28,7 @@ export type AuthProvider = {
   [key: string]: any;
 };
 
-export type InitialState = object | (() => object);
+export type InitialState = any;
 
 export type AuthTypes =
   | typeof AUTH_TYPES.AUTH_REGISTER
@@ -56,10 +42,12 @@ export type AuthTypes =
  * WithPermission Props
  */
 export interface WithPermissionProps {
-  authParams: any;
-  children: any;
-  render: any;
+  authParams: {
+    route: string;
+  };
   component: any;
+  location: any;
+  navigate: any;
 }
 
 /**
@@ -67,7 +55,6 @@ export interface WithPermissionProps {
  */
 
 export interface RootStoreParams {
-  history: History;
   customReducers: any;
   initialState?: InitialState;
 }
@@ -93,7 +80,7 @@ export type ResolveResourceFunction = (
   permissions: any
 ) => ResourceElement[] | Promise<ResourceElement[]>;
 
-export type BootStrapChildren = ResolveResourceFunction | ReactNode;
+export type BootStrapChildren = ReactNode;
 
 export type ResourceProps = {
   intent?: 'route' | 'registration';
@@ -117,7 +104,7 @@ export type LayoutComponentProps = {
   dashboard?: DashboardComponent;
   children?: ReactNode;
   logout?: ReactNode;
-  theme: ThemeOptions;
+  theme: any;
 };
 
 export type LayoutComponent = ComponentType<LayoutComponentProps>;
@@ -129,12 +116,9 @@ export type LoadingComponentProps = {
 
 export type LoadingComponent = FC<LoadingComponentProps>;
 
-export interface LoginComponentProps extends RouterProps {
-  title?: TitleComponent;
-  theme?: object;
-}
+export interface LoginComponentProps extends Component {}
 
-export interface RegisterComponentProps extends RouterProps {
+export interface RegisterComponentProps {
   title?: TitleComponent;
   theme?: object;
 }
@@ -154,22 +138,21 @@ export type LogoutComponent = ComponentType<LogoutComponentProps>;
  * BootStrap Props
  */
 
-export interface BootStrapProps {
-  title?: TitleComponent;
-  dashboard?: DashboardComponent;
-  layout?: LayoutComponent;
-  loading?: LoadingComponent;
-  catchAll?: CatchAllComponent;
-  loginPage?: LoginComponent;
-  registerPage?: RegisterComponent;
-  logoutButton?: LogoutComponent;
+export interface BootStrapCoreProps {
+  title?: ReactNode;
+  dashboard?: ReactNode;
+  layout?: ReactNode;
+  loading?: ReactNode;
+  catchAll?: ReactNode;
+  loginPage?: ReactNode;
+  registerPage?: ReactNode;
+  logoutButton?: ReactNode;
   authProvider?: AuthProvider;
-  i18nProvider: I18nProvider;
+  i18nProvider: any;
   customReducers?: object;
-  history?: History;
   initialState?: InitialState;
   theme?: ThemeOptions;
-  children?: BootStrapChildren;
+  children?: ReactNode;
 }
 
 /**
@@ -177,15 +160,15 @@ export interface BootStrapProps {
  */
 
 export interface BootStrapCoreUIProps {
-  title?: TitleComponent;
-  dashboard?: DashboardComponent;
-  layout?: LayoutComponent;
-  loading?: LoadingComponent;
-  catchAll?: CatchAllComponent;
-  loginPage?: LoginComponent;
-  registerPage?: RegisterComponent;
-  logout?: LogoutComponent;
-  children?: BootStrapChildren;
+  title?: any;
+  dashboard?: any;
+  layout?: any;
+  loading?: any;
+  catchAll?: any;
+  loginPage?: any;
+  registerPage?: any;
+  logout?: any;
+  children?: any;
   theme?: object;
 }
 
@@ -194,14 +177,16 @@ export interface BootStrapCoreUIProps {
  */
 
 export interface BootStrapCoreUIRouterProps {
-  title?: TitleComponent;
-  layout: LayoutComponent;
-  dashboard?: DashboardComponent;
-  catchAll: CatchAllComponent;
-  loading: LoadingComponent;
-  logout?: LogoutComponent;
-  children?: BootStrapChildren;
-  theme?: object;
+  title?: any;
+  layout: any;
+  dashboard?: any;
+  catchAll: any;
+  loading: any;
+  logout?: any;
+  children?: any;
+  theme?: object | any;
+  location?: any;
+  navigate?: any;
 }
 
 /**
@@ -210,10 +195,9 @@ export interface BootStrapCoreUIRouterProps {
 
 export interface BootStrapCoreContextProps {
   authProvider?: AuthProvider | any;
-  i18nProvider: I18nProvider;
-  children?: BootStrapChildren;
-  history?: History;
-  customReducers?: object;
+  i18nProvider: any;
+  children?: ReactNode;
+  customReducers?: any;
   initialState?: InitialState;
 }
 
@@ -225,7 +209,9 @@ export interface RoutesWithLayoutProps {
   title: TitleComponent;
   dashboard: DashboardComponent;
   catchAll: CatchAllComponent;
-  children: BootStrapChildren;
+  children: any;
+  location: any;
+  navigate: any;
 }
 
 /**
@@ -234,4 +220,13 @@ export interface RoutesWithLayoutProps {
 
 export interface RedirectionProps {
   to: string;
+}
+
+/**
+ * Translate Props
+ */
+
+export interface TranslateProps {
+  translate: any;
+  i18n: any;
 }

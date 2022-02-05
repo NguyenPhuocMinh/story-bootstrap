@@ -1,17 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { BootStrapCoreContext } from '../contexts';
 import { BootStrapCoreUI } from './ui';
-import { BootStrapProps } from '../types';
+import { BootStrapCoreProps } from '../types';
 
-const BootStrapCore = (props: BootStrapProps) => {
+const BootStrapCore = (props: BootStrapCoreProps) => {
   const {
     authProvider,
     catchAll,
     children,
     customReducers,
     dashboard,
-    history,
     i18nProvider,
     initialState,
     layout,
@@ -27,7 +24,6 @@ const BootStrapCore = (props: BootStrapProps) => {
     <BootStrapCoreContext
       authProvider={authProvider}
       i18nProvider={i18nProvider}
-      history={history}
       customReducers={customReducers}
       initialState={initialState}
     >
@@ -46,23 +42,6 @@ const BootStrapCore = (props: BootStrapProps) => {
       </BootStrapCoreUI>
     </BootStrapCoreContext>
   );
-};
-
-BootStrapCore.propTypes = {
-  authProvider: PropTypes.any,
-  catchAll: PropTypes.any,
-  customReducers: PropTypes.any,
-  dashboard: PropTypes.any,
-  history: PropTypes.any,
-  i18nProvider: PropTypes.any,
-  initialState: PropTypes.object,
-  layout: PropTypes.any,
-  loading: PropTypes.element,
-  loginPage: PropTypes.any,
-  registerPage: PropTypes.any,
-  logoutButton: PropTypes.element,
-  theme: PropTypes.any,
-  title: PropTypes.string
 };
 
 export default BootStrapCore;

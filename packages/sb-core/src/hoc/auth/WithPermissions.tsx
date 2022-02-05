@@ -1,7 +1,7 @@
 import { createElement, useEffect, useState } from 'react';
 import { useAuthenticated, useGetPermissions } from '../../hooks';
-import { WithPermissionProps } from '../../types';
 import { isEmpty } from 'lodash';
+import { WithPermissionProps } from '../../types';
 
 const WithPermissions = (props: WithPermissionProps): any => {
   const { authParams, component, ...rest } = props;

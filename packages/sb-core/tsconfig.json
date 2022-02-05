@@ -10,9 +10,15 @@
     "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
-    "allowJs": false,
-    "noImplicitAny": true
+    "noImplicitAny": false,
+    "jsx": "react-jsx"
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.test.tsx"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.spec.js",
+    "**/*.test.js",
+    "**/*.test.tsx"
+  ],
   "include": ["src"]
 }

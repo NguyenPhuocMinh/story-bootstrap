@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 
 import useAuthProvider, { defaultAuthParams } from './useAuthProvider';
 import useLogout from './useLogout';
-import { getErrorMessage } from '../../index';
+import { getErrorMessage } from '../../utils';
 import useNotify from '../sideEffect/useNotify';
 
 type CheckAuthProps = (
@@ -33,13 +33,14 @@ const useCheckAuth = (): CheckAuthProps => {
   const checkAuth = useCallback(
     (
       params: any = {},
-      logoutOnFailure,
-      redirectTo: string = defaultAuthParams.loginUrl,
-      disableNotification
+      logoutOnFailure = true,
+      redirectTo = defaultAuthParams.loginUrl,
+      disableNotification = false
     ) =>
       authProvider.checkAuth(params).catch(error => {
         if (logoutOnFailure) {
           logout({}, error && error.redirectTo ? error.redirectTo : redirectTo);
+
           const shouldSkipNotify =
             disableNotification || (error && error.message === false);
 

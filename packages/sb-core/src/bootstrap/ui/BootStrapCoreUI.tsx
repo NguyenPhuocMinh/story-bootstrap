@@ -1,22 +1,25 @@
-import React, { createElement, useMemo } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { createElement, useMemo } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BootStrapCoreUIProps } from '../../types';
 // core ui router
 import BootStrapCoreUIRouter from './BootStrapCoreUIRouter';
-import { BootStrapCoreUIProps } from '../../types';
 
 const BootStrapCoreUI = (props: BootStrapCoreUIProps) => {
   const {
-    catchAll = Noop,
+    catchAll,
     children,
     dashboard,
     layout,
     loading = Noop,
-    loginPage = Noop,
-    registerPage = Noop,
+    loginPage: LoginPage = Noop,
+    registerPage: RegisterPage = Noop,
     logout,
     theme,
     title = 'Demo Basic React'
   } = props;
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const logoutElement = useMemo(
     () => logout && createElement(logout),
@@ -27,27 +30,15 @@ const BootStrapCoreUI = (props: BootStrapCoreUIProps) => {
     <Routes>
       <Route
         path="/login"
-        element={renderProps =>
-          createElement(loginPage, {
-            ...renderProps,
-            title,
-            theme
-          })
-        }
+        element={<LoginPage location={location} navigate={navigate} />}
       />
       <Route
         path="/register"
-        element={renderProps =>
-          createElement(registerPage, {
-            ...renderProps,
-            title,
-            theme
-          })
-        }
+        element={<RegisterPage location={location} navigate={navigate} />}
       />
       <Route
-        path="/"
-        element={renderProps => (
+        path="*"
+        element={
           <BootStrapCoreUIRouter
             catchAll={catchAll}
             dashboard={dashboard}
@@ -56,11 +47,12 @@ const BootStrapCoreUI = (props: BootStrapCoreUIProps) => {
             logout={logoutElement}
             theme={theme}
             title={title}
-            {...renderProps}
+            location={location}
+            navigate={navigate}
           >
             {children}
           </BootStrapCoreUIRouter>
-        )}
+        }
       />
     </Routes>
   );

@@ -1,9 +1,13 @@
-import React, { FC } from 'react';
 import { BootStrapCoreUIRouter, BootStrapCoreUIRouterProps } from 'sb-core';
+import { LoadingBootStrap } from 'sb-material-ui';
 
-const BootStrapStoryRouter: FC<BootStrapCoreUIRouterProps> = props => (
+const BootStrapStoryRouter = (props: BootStrapCoreUIRouterProps) => (
   <BootStrapCoreUIRouter {...props} />
 );
+
+BootStrapStoryRouter.defaultProps = {
+  loading: LoadingBootStrap
+};
 
 BootStrapStoryRouter.displayName = 'BootStrapStoryRouter';
 

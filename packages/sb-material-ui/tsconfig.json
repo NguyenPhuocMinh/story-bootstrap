@@ -10,7 +10,8 @@
     "rootDir": "src",
     "declaration": true,
     "declarationMap": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "jsx": "react-jsx"
   },
   "exclude": [
     "**/*.spec.ts",
