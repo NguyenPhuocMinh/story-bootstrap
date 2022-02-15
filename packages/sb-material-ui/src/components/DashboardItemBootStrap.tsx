@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 });
 
 const DashboardItemBootStrap = (props: DashBoardProps) => {
-  const { location, registerIcons, ...rest } = props;
+  const { registerIcons, ...rest } = props;
   const { translate } = useTranslate();
 
   const classes = useStyles();
@@ -27,7 +27,6 @@ const DashboardItemBootStrap = (props: DashBoardProps) => {
         primaryText={translate('resources.dashboard.name')}
         leftIcon="Dashboard"
         registerIcons={registerIcons}
-        location={location}
         {...rest}
       />
     </Box>

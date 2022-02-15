@@ -45,7 +45,11 @@ const useCheckAuth = (): CheckAuthProps => {
             disableNotification || (error && error.message === false);
 
           !shouldSkipNotify &&
-            notify(getErrorMessage(error, 'auth.auth_check_error'), 'warning');
+            notify(getErrorMessage(error, 'auth.auth_check_error'), {
+              type: 'warning',
+              vertical: 'bottom',
+              horizontal: 'center'
+            });
         }
         throw error;
       }),

@@ -11,7 +11,8 @@
     "declaration": true,
     "declarationMap": true,
     "noImplicitAny": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "composite": true
   },
   "exclude": [
     "**/*.spec.ts",

@@ -45,7 +45,11 @@ const ProfileBootStrap = (props: ProfileProps) => {
     (params: any = {}) => {
       dispatch(clearState());
       authProvider.logout(params).then(() => {
-        notify('users.notification.logout.success', 'success');
+        notify('users.notification.logout.success', {
+          type: 'success',
+          vertical: 'bottom',
+          horizontal: 'center'
+        });
         const redirectUrl = defaultAuthParams.loginUrl;
         redirect(redirectUrl);
       });

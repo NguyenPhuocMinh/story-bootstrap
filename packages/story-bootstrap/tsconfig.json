@@ -11,8 +11,10 @@
     "declaration": true,
     "declarationMap": true,
     "noImplicitAny": false,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "composite": true
   },
+  "references": [{ "path": "../sb-core" }, { "path": "../sb-material-ui" }],
   "exclude": [
     "**/*.spec.ts",
     "**/*.spec.tsx",

@@ -40,6 +40,7 @@ const rootStore = (props: RootStoreParams) => {
     initialState,
     composeEnhancers(applyMiddleware(thunkMiddleware, loggerMiddleware))
   );
+
   return store;
 };
 

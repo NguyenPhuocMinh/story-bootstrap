@@ -6,7 +6,8 @@ import {
   SettingBootStrap,
   ProfileBootStrap,
   useTranslate,
-  useGetIdentity
+  useGetIdentity,
+  RefreshBootStrap
 } from 'story-bootstrap';
 // material ui
 import GithubIcon from '@mui/icons-material/GitHub';
@@ -50,11 +51,11 @@ const useStyles = makeStyles(theme => ({
 
 const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
   const { location, navigate } = props;
-  console.log('🚀 ~ file: AppBar.js ~ line 52 ~ AppBarLayout ~ props', props);
   // hooks
   const classes = useStyles();
   const { translate } = useTranslate();
   const { loading, identity } = useGetIdentity();
+
   const fullName = get(identity, 'fullName');
   const photoURL = get(identity, 'photoURL');
   // states
@@ -120,9 +121,15 @@ const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
               xs: 'none',
               md: 'flex'
             },
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
+            justifyItems: 'center'
           }}
         >
+          <Box width="auto" minWidth={50}>
+            <RefreshBootStrap
+              title={translate('appBar.toolbar.tooltip.refresh')}
+            />
+          </Box>
           <Box width="auto" minWidth={50}>
             <Tooltip title={translate('appBar.toolbar.tooltip.github')}>
               <IconButton
@@ -139,9 +146,11 @@ const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
             </Tooltip>
           </Box>
           <Box width="auto" minWidth={50}>
-            <IconButton color="inherit">
-              <NotificationsNoneIcon />
-            </IconButton>
+            <Tooltip title={translate('appBar.toolbar.tooltip.notification')}>
+              <IconButton color="inherit">
+                <NotificationsNoneIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
           <Box width="auto" minWidth={50}>
             <Tooltip
@@ -184,7 +193,7 @@ const AppBarLayout = ({ isOpen, toggleSidebar, ...props }) => {
                   src={photoURL}
                   sx={{ width: 16, height: 16, marginRight: '10px' }}
                 />
-                <Typography variant="caption">
+                <Typography variant="caption" sx={{ lineHeight: 1 }}>
                   {loading && (
                     <CircularProgress
                       sx={{ marginRight: '5px' }}

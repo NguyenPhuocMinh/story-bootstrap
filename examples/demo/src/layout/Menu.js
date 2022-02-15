@@ -4,23 +4,17 @@ import {
   DashboardItemBootStrap,
   useTranslate
 } from 'story-bootstrap';
+import {} from 'react-router-dom';
 import { NavBar, NavDivider } from './NavLayout';
 import registerIcons from '../registerIcons';
 
 const Menu = ({ hasDashboard, ...props }) => {
-  console.log('🚀 ~ file: Menu.js ~ line 11 ~ Menu ~ props', props);
-  const { location } = props;
   // hooks
   const { translate } = useTranslate();
 
   return (
     <NavBar>
-      {hasDashboard && (
-        <DashboardItemBootStrap
-          location={location}
-          registerIcons={registerIcons}
-        />
-      )}
+      {hasDashboard && <DashboardItemBootStrap registerIcons={registerIcons} />}
       <NavDivider />
       <SubMenuBootStrap
         primaryText={translate('resources.ancients.name')}
@@ -36,7 +30,6 @@ const Menu = ({ hasDashboard, ...props }) => {
             smart_count: 2
           })}
           registerIcons={registerIcons}
-          location={location}
         />
         <MenuItemBootStrap
           to={{
@@ -47,7 +40,6 @@ const Menu = ({ hasDashboard, ...props }) => {
             smart_count: 2
           })}
           registerIcons={registerIcons}
-          location={location}
         />
       </SubMenuBootStrap>
       <NavDivider />

@@ -16,11 +16,11 @@ import { ThemeProvider } from '@mui/material/styles';
 // error boundary
 import { ErrorBoundary } from 'react-error-boundary';
 // helpers
-import DrawerHeaderHelper from './DrawerHeaderBootStrap';
-import ErrorHelper from './ErrorBootStrap';
-import LoadingHelper from './LoadingBootStrap';
-import MainHelper from './MainBootStrap';
-import NavBarHelper from './NavBarBootStrap';
+import DrawerHeaderBootStrap from './DrawerHeaderBootStrap';
+import ErrorBootStrap from './ErrorBootStrap';
+import LoadingBootStrap from './LoadingBootStrap';
+import MainBootStrap from './MainBootStrap';
+import NavBarBootStrap from './NavBarBootStrap';
 // lodash
 import { get } from 'lodash';
 import { LayoutProps } from '../types';
@@ -50,9 +50,9 @@ const LayoutBootStrap = (props: LayoutProps) => {
   const toggleSidebar = () => dispatch(changeSideBar(!open));
 
   return (
-    <Suspense fallback={LoadingHelper}>
+    <Suspense fallback={LoadingBootStrap}>
       <ThemeProvider theme={theme}>
-        <ErrorBoundary FallbackComponent={ErrorHelper}>
+        <ErrorBoundary FallbackComponent={ErrorBootStrap}>
           <Box sx={{ display: 'flex', flexGrow: 1 }}>
             <CssBaseline />
             {createElement(appBar, {
@@ -76,7 +76,7 @@ const LayoutBootStrap = (props: LayoutProps) => {
               anchor="left"
               open={open}
             >
-              <DrawerHeaderHelper>
+              <DrawerHeaderBootStrap>
                 <Typography
                   variant="body2"
                   color="text.primary"
@@ -93,7 +93,7 @@ const LayoutBootStrap = (props: LayoutProps) => {
                 >
                   {`v${version}`}
                 </Typography>
-              </DrawerHeaderHelper>
+              </DrawerHeaderBootStrap>
               <Divider />
               {createElement(menu, {
                 logout,
@@ -102,10 +102,10 @@ const LayoutBootStrap = (props: LayoutProps) => {
                 location
               })}
             </Drawer>
-            <MainHelper open={open} drawerwidth={drawerWidth}>
-              <NavBarHelper style={{ display: 'flex' }} />
+            <MainBootStrap open={open} drawerwidth={drawerWidth}>
+              <NavBarBootStrap style={{ display: 'flex' }} />
               {children}
-            </MainHelper>
+            </MainBootStrap>
           </Box>
         </ErrorBoundary>
       </ThemeProvider>

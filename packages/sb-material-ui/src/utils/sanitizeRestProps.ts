@@ -1,3 +1,3 @@
-const sanitizeRestProps = ({ _location, _match, ...rest }) => rest;
+const sanitizeRestProps = ({ ...rest }) => rest;
 
 export default sanitizeRestProps;

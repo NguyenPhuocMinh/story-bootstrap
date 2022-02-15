@@ -58,7 +58,9 @@ const TRANSLATIONS_EN = {
         github: 'Github of page',
         change_language: 'Change language',
         change_setting: 'Change setting',
-        change_profile: 'Change profile'
+        change_profile: 'Change profile',
+        notification: 'Notification',
+        refresh: 'Refresh'
       },
       language: {
         en: 'English',
