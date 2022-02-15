@@ -4,7 +4,9 @@ import {
   TitleComponent,
   LoadingComponentProps,
   LayoutComponentProps,
-  AnchorTypes
+  AnchorType,
+  VariantType,
+  MarginType
 } from 'sb-core';
 import { OverridesStyleRules } from '@mui/material/styles/overrides';
 
@@ -25,7 +27,6 @@ export interface LayoutProps extends LayoutComponentProps {
  */
 export interface DashBoardProps {
   registerIcons: object | any;
-  location: any;
 }
 
 /**
@@ -82,7 +83,7 @@ export interface PopupProps {
   open: boolean;
   anchorEl: Element;
   languages: Array<{
-    name: string;
+    name: string; // see react-country-flag
     countryCode: string;
     [key: string]: string;
   }>;
@@ -101,7 +102,6 @@ export type MenuItemProps = PropsWithChildren<{
   onClick?: (e: any) => void;
   tooltipProps?: any;
   to: ToProps;
-  location: any;
 }>;
 
 export interface ToProps {
@@ -137,7 +137,7 @@ export interface ProfileProps {
  */
 export interface SettingProps {
   open?: boolean;
-  anchor?: AnchorTypes;
+  anchor?: AnchorType;
   toggleDrawer: () => void;
   changeTheme: () => void;
 }
@@ -163,4 +163,31 @@ export interface NotFoundProps {
   location: any;
   navigate: any;
   match: any;
+}
+
+/**
+ * TextInput Props
+ */
+
+export interface TextInputBootStrapProps {
+  label: string;
+  name: string;
+  values: any;
+  type: any;
+  variant?: VariantType;
+  margin: MarginType;
+  handleChange: () => void;
+  handleBlur: () => void;
+  errors: any;
+  touched: boolean;
+  required: boolean;
+  multiline: boolean;
+  rows: number | string;
+  className: any;
+  startAdornment: any;
+  endAdornment: any;
+}
+
+export interface ButtonRefreshProps {
+  title?: TitleComponent;
 }

@@ -67,10 +67,6 @@ const authProvider = {
   },
   checkAuth: () => {
     const accessToken = localStorage.getItem('access_token');
-    console.log(
-      '🚀 ~ file: authProvider.js ~ line 74 ~ accessToken',
-      accessToken
-    );
     return !isEmpty(accessToken)
       ? Promise.resolve({ accessToken })
       : Promise.reject();

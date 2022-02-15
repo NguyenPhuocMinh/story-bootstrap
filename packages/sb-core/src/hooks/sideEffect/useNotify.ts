@@ -21,8 +21,8 @@ const useNotify = () => {
       type:
         | NotificationType
         | (NotificationOptions & { type: NotificationType }),
-      messageArgs: any = {},
-      undoable: false,
+      messageArgs?: object,
+      undoable?: false,
       autoHideDuration?: number,
       multiLine?: boolean,
       vertical: VerticalType = 'bottom',

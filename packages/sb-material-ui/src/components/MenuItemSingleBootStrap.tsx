@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 // material ui
 import {
   Tooltip,
@@ -11,6 +12,7 @@ import classnames from 'classnames';
 import { createIcon } from '../dynamic';
 import { defaultTheme } from '../utils';
 import { MenuItemProps } from '../types';
+import NavLinkRef from './NavLinkRef';
 
 const useStyles = makeStyles(
   theme => ({
@@ -38,12 +40,12 @@ const MenuItemSingleBootStrap = (props: MenuItemProps) => {
     registerIcons,
     onClick,
     tooltipProps,
-    location,
     ...rest
   } = props;
 
   // hooks
   const classes = useStyles(props);
+  const location = useLocation();
   // func
   const handleMenuTap = useCallback(e => onClick && onClick(e), [onClick]);
 
@@ -51,7 +53,7 @@ const MenuItemSingleBootStrap = (props: MenuItemProps) => {
     <Tooltip title={primaryText} placement="right" {...tooltipProps}>
       <ListItemButton
         className={classnames(classes.root, className)}
-        // component={NavLinkRef}
+        component={NavLinkRef}
         tabIndex={0}
         {...rest}
         onClick={handleMenuTap}

@@ -21,34 +21,27 @@
     "build-esm": "rimraf ./esm && tsc --outDir esm --module es6",
     "watch": "tsc --outDir esm --module es6 --watch"
   },
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "prop-types": "^15.7.2"
-  },
   "devDependencies": {
-    "@mui/material": "^5.2.5",
-    "@testing-library/react": "^12.1.2",
-    "@types/react": "^17.0.38",
-    "@types/node": "^16.11.21",
+    "@mui/material": "^5.4.0",
     "@types/lodash": "^4.14.178",
-    "@types/react-redux": "^7.1.21",
+    "@types/react": "^17.0.39",
+    "@types/react-redux": "^7.1.22",
     "@types/redux-logger": "^3.0.9",
-    "i18next": "^21.6.4",
-    "react-i18next": "^11.15.2",
+    "i18next": "^21.6.10",
+    "react-i18next": "^11.15.3",
     "redux-devtools-extension": "^2.13.9",
-    "react-dom": "^17.0.2",
-    "react-router": "^6.2.1",
-    "react-router-dom": "^6.2.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.4.1",
-    "rimraf": "^3.0.2"
+    "redux-thunk": "^2.4.1"
   },
   "peerDependencies": {
+    "@mui/material": "^5.4.0",
+    "i18next": "^21.6.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
-    "redux": "^4.1.2"
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
   }
 }
