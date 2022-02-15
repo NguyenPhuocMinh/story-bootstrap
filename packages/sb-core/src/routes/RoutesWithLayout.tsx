@@ -39,7 +39,7 @@ const RoutesWithLayout = (props: RoutesWithLayoutProps) => {
       ) : firstChild ? (
         <Route
           path="/"
-          element={() => <Redirection to={`/${firstChild.props.name}`} />}
+          element={<Redirection to={`/${firstChild.props.name}`} />}
         />
       ) : null}
       <Route

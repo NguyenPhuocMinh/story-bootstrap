@@ -1,5 +1,5 @@
-import LanguageDetector from 'i18next-browser-languagedetector';
 import { i18n, initReactI18next } from 'story-bootstrap';
+import LanguageDetector from 'i18next-browser-languagedetector';
 // translations
 import TRANSLATIONS_EN from './locales/en/translation';
 import TRANSLATIONS_VN from './locales/vn/translation';

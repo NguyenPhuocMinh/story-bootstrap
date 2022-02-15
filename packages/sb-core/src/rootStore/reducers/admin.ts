@@ -1,15 +1,22 @@
 import { Reducer } from 'redux';
-import { CHANGE_SIDE_BAR, ChangeSideBar } from '../actions';
+import {
+  CHANGE_SIDE_BAR,
+  ChangeSideBar,
+  REFRESH_PAGE,
+  RefreshPage
+} from '../actions';
 
 export interface AdminState {
   readonly sidebarIsOpen: boolean;
+  readonly spin: boolean;
 }
 
 const initialState: AdminState = {
-  sidebarIsOpen: true
+  sidebarIsOpen: true,
+  spin: false
 };
 
-type ActionTypes = ChangeSideBar | { type: 'OTHER_ACTION' };
+type ActionTypes = ChangeSideBar | RefreshPage | { type: 'OTHER_ACTION' };
 
 const adminReducer: Reducer<AdminState> = (
   state = initialState,
@@ -20,6 +27,11 @@ const adminReducer: Reducer<AdminState> = (
       return {
         ...state,
         sidebarIsOpen: action.payload
+      };
+    case REFRESH_PAGE:
+      return {
+        ...state,
+        spin: action.payload
       };
     default:
       return state;

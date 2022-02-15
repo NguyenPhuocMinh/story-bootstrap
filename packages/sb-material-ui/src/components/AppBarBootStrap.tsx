@@ -3,9 +3,13 @@ import { styled } from '@mui/material/styles';
 
 const drawerWidth = 300;
 
+interface AppBarProps {
+  open?: boolean;
+}
+
 const AppBarBootStrap = styled(AppBar, {
   shouldForwardProp: prop => prop !== 'open'
-})(({ theme, open }) => ({
+})<AppBarProps>(({ theme, open }) => ({
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen

@@ -1,5 +1,6 @@
-import { FC, ReactElement, ComponentType, ReactNode, Component } from 'react';
 import { ThemeOptions } from '@mui/material';
+import { FC, ReactElement, ComponentType, ReactNode, Component } from 'react';
+import { NavigateOptions, Location, NavigateFunction } from 'react-router-dom';
 import { AUTH_TYPES } from './constants';
 
 /**
@@ -42,7 +43,7 @@ export type AuthTypes =
  * WithPermission Props
  */
 export interface WithPermissionProps {
-  authParams: {
+  authParams?: {
     route: string;
   };
   component: any;
@@ -65,7 +66,8 @@ export interface RootStoreParams {
 export interface ResourceCoreProps {
   name: string | any;
   component: ComponentType;
-  match?: any;
+  location: Location;
+  navigate?: NavigateOptions;
 }
 
 /**
@@ -129,7 +131,7 @@ export type RegisterComponent = ComponentType<RegisterComponentProps>;
 
 export type LogoutComponentProps = {
   title?: TitleComponent;
-  theme?: ThemeOptions;
+  theme?: any;
 };
 
 export type LogoutComponent = ComponentType<LogoutComponentProps>;
@@ -151,7 +153,7 @@ export interface BootStrapCoreProps {
   i18nProvider: any;
   customReducers?: object;
   initialState?: InitialState;
-  theme?: ThemeOptions;
+  theme: ThemeOptions;
   children?: ReactNode;
 }
 
@@ -169,7 +171,7 @@ export interface BootStrapCoreUIProps {
   registerPage?: any;
   logout?: any;
   children?: any;
-  theme?: object;
+  theme?: ThemeOptions;
 }
 
 /**
@@ -184,9 +186,9 @@ export interface BootStrapCoreUIRouterProps {
   loading: any;
   logout?: any;
   children?: any;
-  theme?: object | any;
-  location?: any;
-  navigate?: any;
+  theme?: ThemeOptions;
+  location: Location;
+  navigate: NavigateFunction;
 }
 
 /**
@@ -196,7 +198,7 @@ export interface BootStrapCoreUIRouterProps {
 export interface BootStrapCoreContextProps {
   authProvider?: AuthProvider | any;
   i18nProvider: any;
-  children?: ReactNode;
+  children?: ReactElement;
   customReducers?: any;
   initialState?: InitialState;
 }
@@ -210,8 +212,8 @@ export interface RoutesWithLayoutProps {
   dashboard: DashboardComponent;
   catchAll: CatchAllComponent;
   children: any;
-  location: any;
-  navigate: any;
+  location: Location;
+  navigate: NavigateFunction;
 }
 
 /**

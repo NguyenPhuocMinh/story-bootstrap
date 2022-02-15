@@ -59,7 +59,9 @@ const TRANSLATIONS_VN = {
         github: 'Github của trang',
         change_language: 'Thay đổi ngôn ngữ',
         change_setting: 'Thay đổi cài đặt',
-        change_profile: 'Thay đổi thông tin'
+        change_profile: 'Thay đổi thông tin',
+        notification: 'Thông báo',
+        refresh: 'Làm mới'
       },
       language: {
         en: 'English',

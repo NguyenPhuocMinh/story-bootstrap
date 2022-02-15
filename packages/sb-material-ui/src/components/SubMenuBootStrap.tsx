@@ -39,7 +39,7 @@ const SubMenuBootStrap = (props: SubMenuProps) => {
   const [toggle, setToggle] = useState({});
 
   // func
-  const handleToggle = newToggle => {
+  const handleToggle = (newToggle: any) => {
     setToggle(prevToggle => ({
       ...prevToggle,
       [newToggle]: !prevToggle[newToggle]

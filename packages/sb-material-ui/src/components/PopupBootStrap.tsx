@@ -1,5 +1,5 @@
 // core
-import { useTranslate } from 'sb-core';
+import { useTranslate, useRefresh } from 'sb-core';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 // material ui
@@ -26,11 +26,13 @@ const PopupBootStrap = (props: PopupProps) => {
   const classes = useStyles();
   const { translate, i18n } = useTranslate();
   const dispatch = useDispatch();
+  const refresh = useRefresh();
   // func
-  const handleChangeLanguage = language => {
+  const handleChangeLanguage = (language: string) => {
     i18n.changeLanguage(language);
     localStorage.setItem('language', language);
     dispatch(changeLanguage(language));
+    refresh();
   };
   // store
   const language = useSelector(state => get(state, 'language'));
