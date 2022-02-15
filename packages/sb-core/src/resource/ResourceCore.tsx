@@ -6,13 +6,11 @@ import { ResourceCoreProps } from '../types';
 const ResourceCore = (props: ResourceCoreProps) => {
   const { name, component, location, navigate } = props;
 
-  const basePath = '';
-
   return (
     <ResourceCoreContext.Provider value={name}>
       <Routes>
         <Route
-          path={`${basePath}`}
+          path="*"
           element={
             <WithPermissions
               component={component}
