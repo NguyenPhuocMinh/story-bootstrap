@@ -2,7 +2,9 @@
 
 # dependencies
 /node_modules
-/packages/**/node_modules
+/packages/sb-core/node_modules
+/packages/sb-material-ui/node_modules
+/packages/story-bootstrap/node_modules
 /.pnp
 .pnp.js
 
@@ -29,4 +31,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
-/packages/**/package-lock.json*
+/packages/sb-core/package-lock.json
+/packages/sb-material-ui/package-lock.json
+/packages/story-bootstrap/package-lock.json
+
