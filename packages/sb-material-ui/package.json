@@ -1,6 +1,6 @@
 {
   "name": "sb-material-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index",
   "module": "esm/index.js",
   "types": "esm/index.d.ts",
@@ -45,7 +45,7 @@
     "react-country-flag": "^3.0.2",
     "react-error-boundary": "^3.1.4",
     "rimraf": "^3.0.2",
-    "sb-core": "^0.1.0",
+    "sb-core": "^0.1.1",
     "yup": "^0.32.11"
   },
   "dependencies": {
