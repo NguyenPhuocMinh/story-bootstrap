@@ -43,5 +43,6 @@
     "react-router-dom": "^6.2.1",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1"
-  }
+  },
+  "gitHead": "6917de89774422ab4c3b0f9c0489b649d389f47a"
 }

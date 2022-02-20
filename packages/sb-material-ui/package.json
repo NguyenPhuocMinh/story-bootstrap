@@ -52,5 +52,6 @@
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1"
-  }
+  },
+  "gitHead": "6917de89774422ab4c3b0f9c0489b649d389f47a"
 }
