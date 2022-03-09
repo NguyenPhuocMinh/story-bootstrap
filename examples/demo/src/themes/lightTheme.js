@@ -3,7 +3,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const lightText = {
   primary: 'rgb(17, 24, 39)',
-  secondary: 'rgb(107, 114, 128)',
+  secondary: blueGrey[500],
   disabled: 'rgb(149, 156, 169)'
 };
 
@@ -25,9 +25,7 @@ const lightTheme = responsiveFontSizes(
       },
       common: {
         black: '#000',
-        white: 'rgb(255, 255, 255)',
-        text: blueGrey[500],
-        selected: 'rgb(0, 0, 0, 0.05)'
+        white: 'rgb(255, 255, 255)'
       },
       success: {
         main: '#aed581',
@@ -42,6 +40,9 @@ const lightTheme = responsiveFontSizes(
       background: {
         paper: '#FAF6F3',
         default: '#FFFFFF'
+      },
+      action: {
+        selected: 'rgb(0, 0, 0, 0.05)'
       }
     },
     components: {

@@ -2,6 +2,7 @@ const TRANSLATIONS_EN = {
   title: 'Story Book',
   auth: {
     auth_check_error: 'Please login to continue',
+    auth_check_expired: 'Token expired',
     user_menu: 'Profile',
     username: 'Username',
     password: 'Password',

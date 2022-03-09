@@ -1,5 +1,9 @@
 import { createElement, useEffect, useState } from 'react';
-import { useAuthenticated, useGetPermissions } from '../../hooks';
+import {
+  useAuthenticated,
+  useGetPermissions,
+  useCheckExpiredToken
+} from '../../hooks';
 import { isEmpty } from 'lodash';
 import { WithPermissionProps } from '../../types';
 
@@ -9,6 +13,7 @@ const WithPermissions = (props: WithPermissionProps): any => {
   const [permissions, setPermissions] = useState(null);
 
   useAuthenticated(authParams);
+  useCheckExpiredToken();
   const getPermissions = useGetPermissions();
 
   useEffect(() => {

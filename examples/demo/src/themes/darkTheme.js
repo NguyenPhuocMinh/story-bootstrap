@@ -3,7 +3,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const darkText = {
   primary: 'rgb(255,255,255)',
-  secondary: 'rgb(229, 231, 235)',
+  secondary: grey[500],
   disabled: 'rgb(156, 163, 175)'
 };
 
@@ -25,9 +25,7 @@ const darkTheme = responsiveFontSizes(
       },
       common: {
         black: '#000',
-        white: 'rgb(255, 255, 255)',
-        text: grey[500],
-        selected: 'rgba(255, 255, 255, 0.1)'
+        white: 'rgb(255, 255, 255)'
       },
       success: {
         main: '#bedd9a',
@@ -42,6 +40,9 @@ const darkTheme = responsiveFontSizes(
       background: {
         paper: '#262526',
         default: '#1E1D1E'
+      },
+      action: {
+        selected: 'rgba(255, 255, 255, 0.1)'
       }
     },
     status: {

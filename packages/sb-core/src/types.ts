@@ -26,6 +26,7 @@ export type AuthProvider = {
   getIdentity: () => Promise<UserProps>;
   loginWithGoogle?: () => Promise<any>;
   loginWithFacebook?: () => Promise<any>;
+  checkExpiredToken: () => Promise<any>;
   [key: string]: any;
 };
 

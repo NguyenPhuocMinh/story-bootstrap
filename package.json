@@ -2,7 +2,7 @@
   "name": "story-bootstrap-lerna",
   "private": true,
   "author": "Minh Nguyễn",
-  "repository":"https://github.com/NguyenPhuocMinh/story-bootstrap",
+  "repository": "https://github.com/NguyenPhuocMinh/story-bootstrap",
   "scripts": {
     "lerna:publish": "lerna publish",
     "lerna:build": "lerna run build",

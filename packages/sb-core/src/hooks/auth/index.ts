@@ -7,6 +7,7 @@ import useGetIdentity from './useGetIdentity';
 import useGetPermissions from './useGetPermissions';
 import useLogout from './useLogout';
 import usePermissions from './usePermissions';
+import useCheckExpiredToken from './useCheckExpiredToken';
 
 export {
   useAuthProvider,
@@ -17,5 +18,6 @@ export {
   useGetIdentity,
   useLogout,
   useAuthState,
-  useCheckRoles
+  useCheckRoles,
+  useCheckExpiredToken
 };
