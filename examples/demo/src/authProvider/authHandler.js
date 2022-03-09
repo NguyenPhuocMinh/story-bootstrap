@@ -39,6 +39,7 @@ export const refreshTokenHandler = () => {
   const refreshTokenHandlerInterval = setInterval(() => {
     if (localStorage.getItem('refresh_token')) {
       if (checkExpiredTime()) {
+        console.log('checkExpiredTime', checkExpiredTime());
         refreshToken();
       }
     } else {
@@ -90,5 +91,15 @@ export const getProfile = () => {
   return {
     fullName,
     photoURL
+  };
+};
+
+export const getExpires = () => {
+  const expiresIn = localStorage.getItem('expires_in');
+  const expireAt = localStorage.getItem('expire_at');
+
+  return {
+    expiresIn,
+    expireAt
   };
 };

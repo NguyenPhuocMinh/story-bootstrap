@@ -1,10 +1,10 @@
 {
   "root": true,
   "settings": {
-    "react": {
-      "version": "detect"
-    },
-    "import/extensions": [".js", ".ts", ".tsx", ".jsx"]
+    "import/extensions": [".js", ".ts", ".tsx", ".jsx"],
+    "import/resolver": {
+      "typescript": {}
+    }
   },
   "env": {
     "browser": true,

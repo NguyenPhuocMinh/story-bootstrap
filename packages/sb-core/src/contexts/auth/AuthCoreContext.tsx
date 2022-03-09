@@ -15,7 +15,8 @@ const defaultProvider: AuthProvider = {
   getPermissions: () => Promise.resolve(),
   loginWithGoogle: () => Promise.resolve(),
   loginWithFacebook: () => Promise.resolve(),
-  getIdentity: () => Promise.resolve(defaultUser)
+  getIdentity: () => Promise.resolve(defaultUser),
+  checkExpiredToken: () => Promise.resolve()
 };
 
 const AuthCoreContext = createContext<AuthProvider>(defaultProvider);

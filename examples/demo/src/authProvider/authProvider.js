@@ -4,7 +4,8 @@ import {
   refreshTokenHandler,
   removeLogin,
   prepareResponse,
-  getProfile
+  getProfile,
+  getExpires
 } from './authHandler';
 import { firebaseAuth, googleProvider, signInWithPopup } from '../firebase';
 import constants from '../constants';
@@ -102,7 +103,8 @@ const authProvider = {
       return err.message;
     }
   },
-  getIdentity: () => Promise.resolve(getProfile())
+  getIdentity: () => Promise.resolve(getProfile()),
+  checkExpiredToken: () => Promise.resolve(getExpires())
 };
 
 export default authProvider;

@@ -17,7 +17,7 @@ import NavLinkRef from './NavLinkRef';
 const useStyles = makeStyles(
   theme => ({
     root: {
-      color: theme.palette.common.text,
+      color: theme.palette.text.secondary,
       '&:hover': {
         color: theme.palette.text.primary,
         borderRadius: 10
@@ -25,7 +25,7 @@ const useStyles = makeStyles(
       marginTop: theme.spacing(0.625)
     },
     selected: {
-      background: `${theme.palette.common.selected} !important`,
+      background: `${theme.palette.action.selected} !important`,
       color: theme.palette.text.primary,
       borderRadius: 10
     }
