@@ -5,4 +5,4 @@
 
 ### step 2: public jenkins using ngrok -> ngrok http 8080
 
-### step 3:
+### step 3: set up nodejs tool in jenkins

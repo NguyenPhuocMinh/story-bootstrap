@@ -26,11 +26,6 @@ pipeline {
             steps {
                 sh 'npm run test'
             }
-            post {
-                always {
-                    junit 'junit.xml'
-                }
-            }
         }
         stage('Build') {
             steps {
