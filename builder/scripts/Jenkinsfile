@@ -1,32 +1,41 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:16.13.1-alpine'
+        }
+    }
     stages {
         stage('Clone') {
             steps {
                 git 'https://github.com/NguyenPhuocMinh/story-bootstrap.git'
             }
         }
-        // stage('Install') {
-        //     steps {
-        //         sh 'npm install'
-        //         sh 'npm run bootstrap'
-        //         sh 'npm run lint'
-        //     }
-        // }
-        // stage('Build') {
-        //     steps {
-        //         sh 'npm run build'
-        //     }
-        // }
-        // stage('Test') {
-        //     steps {
-        //         sh 'npm test'
-        //     }
-        //     post {
-        //         always {
-        //             junit 'junit.xml'
-        //         }
-        //     }
-        // }
+        stage('Install') {
+            steps {
+                sh 'npm install'
+                sh 'npm run lerna:bootstrap'
+            }
+        }
+        stage('ESLint') {
+            steps {
+                sh 'npm run lint:check'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm run test'
+            }
+            post {
+                always {
+                    junit 'junit.xml'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run lerna:build'
+            }
+        }
+
     }
 }
