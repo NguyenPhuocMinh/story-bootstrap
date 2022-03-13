@@ -34,7 +34,6 @@ pipeline {
         }
         stage('Publish to npm') {
             steps {
-                echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" > .npmrc
                 sh 'npm run lerna:publish from-git --no-git-tag-version --no-push --yes'
             }
         }
