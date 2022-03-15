@@ -1,9 +1,22 @@
 {
-  "packages": [
-    "packages/*"
-  ],
-  "version": "0.1.7",
+  "packages": ["packages/*"],
+  "version": "independent",
   "npmClient": "npm",
   "stream": true,
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "message": "chore(release): publish"
+    },
+    "publish": {
+      "ignoreChanges": ["ignored-file", "*.md"],
+      "message": "chore(release): publish",
+      "registry": "https://npm.pkg.github.com"
+    },
+    "bootstrap": {
+      "ignore": "component-*",
+      "npmClientArgs": ["--no-package-lock"]
+    }
+  }
 }
