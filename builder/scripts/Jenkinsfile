@@ -17,21 +17,6 @@ pipeline {
                 sh 'npm run lerna:bootstrap'
             }
         }
-        stage('ESLint') {
-            steps {
-                sh 'npm run lint:check'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm run test'
-            }
-        }
-        // stage('Build') {
-        //     steps {
-        //         sh 'npm run lerna:build'
-        //     }
-        // }
         stage('Publish') {
             steps {
                 sh 'npm run lerna:publish'
