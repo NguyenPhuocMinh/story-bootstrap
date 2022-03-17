@@ -5,12 +5,7 @@
   "stream": true,
   "useWorkspaces": true,
   "command": {
-    "version": {
-      "allowBranch": "master",
-      "message": "chore(release): publish"
-    },
     "publish": {
-      "ignoreChanges": ["ignored-file", "*.md"],
       "message": "chore(release): publish",
       "registry": "https://npm.pkg.github.com"
     },
