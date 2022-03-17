@@ -4,7 +4,7 @@
   "author": "Minh Nguyễn",
   "repository": "https://github.com/NguyenPhuocMinh/story-bootstrap",
   "scripts": {
-    "lerna:publish": "lerna publish",
+    "lerna:publish": "lerna publish --canary --yes",
     "lerna:build": "lerna run build",
     "lerna:watch": "lerna run --parallel watch",
     "lerna:bootstrap": "lerna bootstrap",
