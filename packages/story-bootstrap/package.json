@@ -35,8 +35,8 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
-    "sb-core": "^0.1.6",
-    "sb-material-ui": "^0.1.6",
+    "sb-core": "^0.1.7",
+    "sb-material-ui": "^0.1.7",
     "yup": "^0.32.11"
   },
   "peerDependencies": {
