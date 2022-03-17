@@ -67,8 +67,5 @@
       "jest --bail --findRelatedTests",
       "git add"
     ]
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
