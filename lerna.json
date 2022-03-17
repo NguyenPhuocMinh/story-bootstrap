@@ -1,21 +1,7 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "0.1.7",
   "npmClient": "npm",
   "stream": true,
-  "useWorkspaces": true,
-  "command": {
-    "publish": {
-      "message": "chore(release): publish",
-      "registry": "https://npm.pkg.github.com"
-    },
-    "bootstrap": {
-      "ignore": "component-*",
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
-    }
-  }
+  "useWorkspaces": true
 }
