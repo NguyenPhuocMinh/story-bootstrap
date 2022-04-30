@@ -7,6 +7,8 @@ import AppBar from './AppBar';
 import Menu from './Menu';
 // themes
 import { lightTheme, darkTheme } from '../themes';
+import routes from './routes';
+import registerIcons from '../registerIcons';
 
 const Layout = props => {
   // store
@@ -21,6 +23,8 @@ const Layout = props => {
       theme={theme}
       drawerWidth={300}
       version={packageMeta.version}
+      routes={routes}
+      registerIcons={registerIcons}
     />
   );
 };
