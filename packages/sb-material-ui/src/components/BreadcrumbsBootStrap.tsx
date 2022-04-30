@@ -36,7 +36,7 @@ const BreadCrumbsBootStrap = (props: BreadCrumbsProps) => {
             const to = `/${pathNames.slice(0, index + 1).join('/')}`;
 
             return isEmpty(parent) ? (
-              <Box display="flex" flexWrap="wrap" alignItems="center">
+              <Box display="flex" flexWrap="wrap" alignItems="center" key={to}>
                 {leftIcon
                   ? createIcon({ icon: route.leftIcon, registerIcons })
                   : ''}
@@ -51,7 +51,7 @@ const BreadCrumbsBootStrap = (props: BreadCrumbsProps) => {
                 </Typography>
               </Box>
             ) : (
-              <Box display="flex" flexWrap="wrap" alignItems="center">
+              <Box display="flex" flexWrap="wrap" alignItems="center" key={to}>
                 {leftIcon
                   ? createIcon({ icon: route.leftIcon, registerIcons })
                   : ''}
