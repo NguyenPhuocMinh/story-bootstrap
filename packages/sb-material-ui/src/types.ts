@@ -10,6 +10,16 @@ import {
 } from 'sb-core';
 import { OverridesStyleRules } from '@mui/material/styles/overrides';
 
+export interface RouteProps {
+  parent: {
+    pathName: string;
+    routerName: string;
+  };
+  pathName: string;
+  leftIcon: string;
+  routerName: string;
+}
+
 /**
  * Layout Props
  */
@@ -20,6 +30,8 @@ export interface LayoutProps extends LayoutComponentProps {
   drawerWidth: number;
   location: any;
   navigate: any;
+  routes: Array<RouteProps>;
+  registerIcons: object | any;
 }
 
 /**
@@ -190,4 +202,9 @@ export interface TextInputBootStrapProps {
 
 export interface ButtonRefreshProps {
   title?: TitleComponent;
+}
+
+export interface BreadCrumbsProps {
+  registerIcons: object | any;
+  routes: Array<RouteProps>;
 }

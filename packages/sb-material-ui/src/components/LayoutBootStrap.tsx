@@ -21,6 +21,7 @@ import ErrorBootStrap from './ErrorBootStrap';
 import LoadingBootStrap from './LoadingBootStrap';
 import MainBootStrap from './MainBootStrap';
 import NavBarBootStrap from './NavBarBootStrap';
+import BreadCrumbsBootStrap from './BreadcrumbsBootStrap';
 // lodash
 import { get } from 'lodash';
 import { LayoutProps } from '../types';
@@ -37,7 +38,9 @@ const LayoutBootStrap = (props: LayoutProps) => {
     drawerWidth,
     children,
     navigate,
-    location
+    location,
+    routes,
+    registerIcons
   } = props;
 
   // hooks
@@ -104,6 +107,10 @@ const LayoutBootStrap = (props: LayoutProps) => {
             </Drawer>
             <MainBootStrap open={open} drawerwidth={drawerWidth}>
               <NavBarBootStrap style={{ display: 'flex' }} />
+              <BreadCrumbsBootStrap
+                routes={routes}
+                registerIcons={registerIcons}
+              />
               {children}
             </MainBootStrap>
           </Box>

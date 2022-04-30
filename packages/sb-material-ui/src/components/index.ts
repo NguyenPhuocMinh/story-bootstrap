@@ -17,6 +17,7 @@ import ErrorBootStrap from './ErrorBootStrap';
 import LoadingBootStrap from './LoadingBootStrap';
 import NotFoundBootStrap from './NotFoundBootStrap';
 import RefreshBootStrap from './RefreshBootStrap';
+import BreadCrumbsBootStrap from './BreadcrumbsBootStrap';
 
 export {
   LayoutBootStrap,
@@ -37,5 +38,6 @@ export {
   ErrorBootStrap,
   LoadingBootStrap,
   NotFoundBootStrap,
-  RefreshBootStrap
+  RefreshBootStrap,
+  BreadCrumbsBootStrap
 };

@@ -23,11 +23,11 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "story-bootstrap": "^0.1.5",
+    "story-bootstrap": "^0.1.7",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "REACT_APP_REST_AUTH_PROVIDER=http://0.0.0.0:7979/rest/api/auth REACT_APP_REST_DATA_PROVIDER=http://0.0.0.0:7979/rest/api react-scripts start",
+    "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

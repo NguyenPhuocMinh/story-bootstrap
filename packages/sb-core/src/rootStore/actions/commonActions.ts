@@ -5,7 +5,6 @@ export const CHANGE_SIDE_BAR = 'CHANGE_SIDE_BAR';
 export const COMPLETE = 'COMPLETE';
 export const UNDO = 'UNDO';
 export const REFRESH_PAGE = 'REFRESH_PAGE';
-
 export interface ClearState {
   readonly type: typeof CLEAR_STATE;
 }
