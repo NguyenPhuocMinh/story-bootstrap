@@ -208,3 +208,8 @@ export interface BreadCrumbsProps {
   registerIcons: object | any;
   routes: Array<RouteProps>;
 }
+
+export interface CountryFlagProps {
+  style: object | any;
+  countryCode: string;
+}

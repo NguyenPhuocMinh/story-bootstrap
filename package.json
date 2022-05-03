@@ -17,7 +17,8 @@
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
     "format:check": "prettier --check \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
     "format:fix": "prettier --write \"packages/*/src/**/*.{js,json,ts,tsx,md}\" \"examples/*/src/**/*.{js,ts,json,tsx,md}\"",
-    "run-demo": "cd examples/demo && npm start"
+    "run-demo": "cd examples/demo && npm start",
+    "pre-commit": "lint-staged"
   },
   "keywords": [
     "lerna",
@@ -64,8 +65,7 @@
     "**/*.{js,jsx,ts,tsx}": [
       "eslint --ext .js,.ts,.tsx \"./packages/**/src/**/*.{js,ts,tsx}\" \"./examples/**/src/**/*.{js,ts,tsx}\"",
       "prettier --write",
-      "jest --bail --findRelatedTests",
-      "git add"
+      "jest --bail --findRelatedTests"
     ]
   }
 }

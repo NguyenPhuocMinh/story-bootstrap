@@ -1,3 +1,4 @@
 import createIcon from './createIcon';
+import createCountryFlag from './createCountryFlag';
 
-export { createIcon };
+export { createIcon, createCountryFlag };
