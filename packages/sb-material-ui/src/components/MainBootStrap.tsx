@@ -21,9 +21,7 @@ const MainBootStrap = styled('main', {
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
-  }),
-  maxWidth: '100vh',
-  overflowY: 'scroll'
+  })
 }));
 
 export default MainBootStrap;

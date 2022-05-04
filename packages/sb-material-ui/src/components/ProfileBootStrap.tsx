@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, Fragment } from 'react';
 // core
 import {
   useTranslate,
@@ -11,14 +11,19 @@ import {
 // redux
 import { useDispatch } from 'react-redux';
 // material ui
-import { ListItemIcon, Menu, MenuItem, Typography } from '@mui/material';
 import {
-  PowerSettingsNew as PowerSettingsNewIcon,
-  RecentActors as RecentActorsIcon
-} from '@mui/icons-material';
+  Divider,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  Typography
+} from '@mui/material';
+import { PowerSettingsNew as PowerSettingsNewIcon } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
 import { defaultTheme } from '../utils';
 import { ProfileProps } from '../types';
+import { isEmpty } from 'lodash';
+import { createIcon } from '../dynamic';
 
 const useStyles = makeStyles(
   _ => ({
@@ -30,7 +35,7 @@ const useStyles = makeStyles(
 );
 
 const ProfileBootStrap = (props: ProfileProps) => {
-  const { open, anchorEl, handleClose } = props;
+  const { open, anchorEl, handleClose, menus, registerIcons } = props;
   // hooks
   const classes = useStyles();
   const { translate } = useTranslate();
@@ -38,8 +43,6 @@ const ProfileBootStrap = (props: ProfileProps) => {
   const dispatch = useDispatch();
   const notify = useNotify();
   const redirect = useRedirect();
-
-  const handleShowProfile = () => {};
 
   const handleLogout = useCallback(
     (params: any = {}) => {
@@ -92,44 +95,66 @@ const ProfileBootStrap = (props: ProfileProps) => {
       transformOrigin={{ horizontal: 'right', vertical: 'top' }}
       anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
     >
-      <MenuItem
-        onClick={handleShowProfile}
-        classes={{
-          selected: classes.selected
-        }}
-      >
-        <ListItemIcon>
-          <RecentActorsIcon
-            sx={{
-              fontSize: '1.25rem',
-              width: '1em',
-              height: '1em'
-            }}
-          />
-        </ListItemIcon>
-        <Typography variant="caption">
-          {translate('appBar.toolbar.profile.show_profile')}
-        </Typography>
-      </MenuItem>
-      <MenuItem
-        onClick={handleLogout}
-        classes={{
-          selected: classes.selected
-        }}
-      >
-        <ListItemIcon>
-          <PowerSettingsNewIcon
-            sx={{
-              fontSize: '1.25rem',
-              width: '1em',
-              height: '1em'
-            }}
-          />
-        </ListItemIcon>
-        <Typography variant="caption">
-          {translate('appBar.toolbar.profile.logout')}
-        </Typography>
-      </MenuItem>
+      {!isEmpty(menus) ? (
+        menus.map(menu => {
+          return (
+            <Fragment key={menu.name}>
+              <MenuItem
+                key={menu.name}
+                onClick={menu.onClick}
+                classes={{
+                  selected: classes.selected
+                }}
+              >
+                <ListItemIcon>
+                  {createIcon({ icon: menu.icon, registerIcons })}
+                </ListItemIcon>
+                <Typography variant="caption">
+                  {translate(menu.title)}
+                </Typography>
+              </MenuItem>
+              {menu.divider ? <Divider /> : null}
+              <MenuItem
+                onClick={handleLogout}
+                classes={{
+                  selected: classes.selected
+                }}
+              >
+                <ListItemIcon>
+                  <PowerSettingsNewIcon
+                    sx={{
+                      fontSize: '1.25rem',
+                      width: '1em',
+                      height: '1em'
+                    }}
+                  />
+                </ListItemIcon>
+                <Typography variant="caption">logout</Typography>
+              </MenuItem>
+            </Fragment>
+          );
+        })
+      ) : (
+        <MenuItem
+          onClick={handleLogout}
+          classes={{
+            selected: classes.selected
+          }}
+        >
+          <ListItemIcon>
+            <PowerSettingsNewIcon
+              sx={{
+                fontSize: '1.25rem',
+                width: '1em',
+                height: '1em'
+              }}
+            />
+          </ListItemIcon>
+          <Typography variant="caption">
+            {translate('appBar.toolbar.profile.logout')}
+          </Typography>
+        </MenuItem>
+      )}
     </Menu>
   );
 };

@@ -142,6 +142,15 @@ export interface ProfileProps {
   handleClose: () => void;
   location?: any;
   navigate?: any;
+  menus: Array<{
+    id: string;
+    name: string;
+    title: string;
+    icon: string;
+    onClick: (params: any) => void;
+    divider: boolean;
+  }>;
+  registerIcons: object | any;
 }
 
 /**
