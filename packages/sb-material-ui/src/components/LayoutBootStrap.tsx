@@ -111,11 +111,7 @@ const LayoutBootStrap = (props: LayoutProps) => {
                 routes={routes}
                 registerIcons={registerIcons}
               />
-              <Box
-                sx={{ height: 'auto', maxHeight: '100vh', overflowY: 'scroll' }}
-              >
-                {children}
-              </Box>
+              {children}
             </MainBootStrap>
           </Box>
         </ErrorBoundary>
