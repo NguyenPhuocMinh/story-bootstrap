@@ -38,7 +38,15 @@ const useCheckAuth = (): CheckAuthProps => {
       disableNotification = false
     ) =>
       authProvider.checkAuth(params).catch(error => {
+        console.warn(
+          '🚀 ~ file: useCheckAuth.ts ~ line 41 ~ authProvider.checkAuth ~ error',
+          error
+        );
         if (logoutOnFailure) {
+          console.warn(
+            '🚀 ~ file: useCheckAuth.ts ~ line 43 ~ authProvider.checkAuth ~ logoutOnFailure',
+            logoutOnFailure
+          );
           logout({}, error && error.redirectTo ? error.redirectTo : redirectTo);
 
           const shouldSkipNotify =
