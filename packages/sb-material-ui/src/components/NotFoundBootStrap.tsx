@@ -25,8 +25,8 @@ const useStyles = makeStyles(
       }
     },
     icon: {
-      width: '9em',
-      height: '9em'
+      width: '9em !important',
+      height: '9em !important'
     },
     message: {
       textAlign: 'center',
