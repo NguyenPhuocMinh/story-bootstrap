@@ -1,4 +1,4 @@
-import { useCallback, Fragment } from 'react';
+import { useCallback } from 'react';
 // core
 import {
   useTranslate,
@@ -16,7 +16,8 @@ import {
   ListItemIcon,
   Menu,
   MenuItem,
-  Typography
+  Typography,
+  Box
 } from '@mui/material';
 import { PowerSettingsNew as PowerSettingsNewIcon } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
@@ -98,7 +99,7 @@ const ProfileBootStrap = (props: ProfileProps) => {
       {!isEmpty(menus) ? (
         menus.map(menu => {
           return (
-            <Fragment key={menu.name}>
+            <Box key={menu.name}>
               <MenuItem
                 key={menu.name}
                 onClick={menu.onClick}
@@ -131,7 +132,7 @@ const ProfileBootStrap = (props: ProfileProps) => {
                 </ListItemIcon>
                 <Typography variant="caption">logout</Typography>
               </MenuItem>
-            </Fragment>
+            </Box>
           );
         })
       ) : (
