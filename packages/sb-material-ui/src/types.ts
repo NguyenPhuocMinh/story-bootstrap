@@ -226,9 +226,6 @@ export interface SwitchInputBootStrapProps {
     | 'info'
     | 'success'
     | 'warning';
-  checkedIcon: string;
-  icon: string;
-  registerIcons: object | any;
   defaultChecked: boolean;
   disabled: boolean;
   disableRipple: boolean;
