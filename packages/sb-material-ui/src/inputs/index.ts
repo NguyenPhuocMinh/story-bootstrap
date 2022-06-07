@@ -1,3 +1,4 @@
 import TextInputBootStrap from './TextInputBootStrap';
+import SwitchInputBootStrap from './SwitchInputBootStrap';
 
-export { TextInputBootStrap };
+export { TextInputBootStrap, SwitchInputBootStrap };

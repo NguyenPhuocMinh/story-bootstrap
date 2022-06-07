@@ -209,6 +209,33 @@ export interface TextInputBootStrapProps {
   endAdornment: any;
 }
 
+export interface SwitchInputBootStrapProps {
+  label: string;
+  name: string;
+  values: any;
+  value: any;
+  required: boolean;
+  handleChange: () => void;
+  handleBlur: () => void;
+  className: any;
+  color:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'info'
+    | 'success'
+    | 'warning';
+  checkedIcon: string;
+  icon: string;
+  registerIcons: object | any;
+  defaultChecked: boolean;
+  disabled: boolean;
+  disableRipple: boolean;
+  size: 'medium' | 'small';
+  sx: object | any;
+}
+
 export interface ButtonRefreshProps {
   title?: TitleComponent;
 }
