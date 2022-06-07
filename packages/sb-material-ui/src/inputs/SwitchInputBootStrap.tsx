@@ -4,6 +4,7 @@ import { useTranslate } from 'sb-core';
 import { FormControlLabel, Switch } from '@mui/material';
 import { SwitchInputBootStrapProps } from '../types';
 import { createIcon } from '../dynamic';
+import { isEmpty } from 'lodash';
 
 const SwitchInputBootStrap = (props: SwitchInputBootStrapProps) => {
   const {
@@ -40,11 +41,17 @@ const SwitchInputBootStrap = (props: SwitchInputBootStrapProps) => {
           required={required}
           className={className}
           color={color}
-          checkedIcon={createIcon({ icon: checkedIcon, registerIcons })}
+          checkedIcon={
+            !isEmpty(checkedIcon)
+              ? createIcon({ icon: checkedIcon, registerIcons })
+              : null
+          }
           defaultChecked={defaultChecked}
           disabled={disabled}
           disableRipple={disableRipple}
-          icon={createIcon({ icon: icon, registerIcons })}
+          icon={
+            !isEmpty(icon) ? createIcon({ icon: icon, registerIcons }) : null
+          }
           size={size}
           sx={sx}
         />
