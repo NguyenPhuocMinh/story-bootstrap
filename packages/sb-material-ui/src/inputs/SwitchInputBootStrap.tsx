@@ -22,7 +22,6 @@ const SwitchInputBootStrap = (props: SwitchInputBootStrapProps) => {
     defaultChecked,
     disabled,
     disableRipple,
-    icon,
     size,
     sx
   } = props;
@@ -49,9 +48,6 @@ const SwitchInputBootStrap = (props: SwitchInputBootStrapProps) => {
           defaultChecked={defaultChecked}
           disabled={disabled}
           disableRipple={disableRipple}
-          icon={
-            !isEmpty(icon) ? createIcon({ icon: icon, registerIcons }) : null
-          }
           size={size}
           sx={sx}
         />
