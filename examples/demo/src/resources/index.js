@@ -2,7 +2,8 @@ import {
   VampireList,
   VampireCreate,
   MonsterList,
-  MonsterCreate
+  MonsterCreate,
+  VampireEdit
 } from '../components';
 
 const resources = [
@@ -13,6 +14,10 @@ const resources = [
   {
     name: 'vampire-create',
     component: VampireCreate
+  },
+  {
+    name: 'vampire-edit/:id',
+    component: VampireEdit
   },
   {
     name: 'monster-list',

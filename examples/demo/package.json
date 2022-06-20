@@ -23,7 +23,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "story-bootstrap": "^0.1.8",
+    "story-bootstrap": "../../packages/story-bootstrap",
     "web-vitals": "^2.1.2"
   },
   "scripts": {

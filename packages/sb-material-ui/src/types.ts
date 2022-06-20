@@ -233,6 +233,22 @@ export interface SwitchInputBootStrapProps {
   sx: object | any;
 }
 
+export interface SearchInputBootStrapProps {
+  label: string;
+  placeholder: string;
+  name: string;
+  values: any;
+  type: any;
+  variant?: VariantType;
+  margin: MarginType;
+  size: 'medium' | 'small';
+  handleChange: () => void;
+  handleBlur: () => void;
+  handleReset: () => void;
+  touched: boolean;
+  className: any;
+}
+
 export interface ButtonRefreshProps {
   title?: TitleComponent;
 }
