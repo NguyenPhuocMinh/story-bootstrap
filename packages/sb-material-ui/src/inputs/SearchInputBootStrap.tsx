@@ -16,7 +16,7 @@ const SearchInputBootStrap = (props: SearchInputBootStrapProps) => {
     type,
     variant,
     margin = 'none',
-    size = 'small',
+    size = 'medium',
     handleChange,
     handleBlur,
     handleReset,
@@ -47,17 +47,20 @@ const SearchInputBootStrap = (props: SearchInputBootStrapProps) => {
         autoComplete: 'off',
         endAdornment: (
           <InputAdornment position="end">
-            <IconButton
-              onClick={handleReset}
-              onMouseDown={handleOnMouseDown}
-              edge="end"
-            >
-              {isEmpty(values[name]) && !touched[name] ? (
-                <SearchIcon color="disabled" />
-              ) : (
+            {!isEmpty(values[name]) && !touched[name] ? (
+              <SearchIcon />
+            ) : (
+              <IconButton
+                onClick={handleReset}
+                onMouseDown={handleOnMouseDown}
+                edge="end"
+                sx={{
+                  border: 'none !important'
+                }}
+              >
                 <ClearIcon />
-              )}
-            </IconButton>
+              </IconButton>
+            )}
           </InputAdornment>
         )
       }}
