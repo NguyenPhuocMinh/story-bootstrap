@@ -47,7 +47,7 @@ const SearchInputBootStrap = (props: SearchInputBootStrapProps) => {
         autoComplete: 'off',
         endAdornment: (
           <InputAdornment position="end">
-            {!isEmpty(values[name]) && !touched[name] ? (
+            {isEmpty(values[name]) && !touched[name] ? (
               <SearchIcon />
             ) : (
               <IconButton
