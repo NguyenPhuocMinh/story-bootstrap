@@ -32,6 +32,7 @@
     "formik": "^2.2.9",
     "react-country-flag": "^3.0.2",
     "react-error-boundary": "^3.1.4",
+    "react-number-format": "^4.9.3",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
