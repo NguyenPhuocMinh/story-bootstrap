@@ -7,7 +7,7 @@ import { SwitchInputBootStrapProps } from '../types';
 const SwitchInputBootStrap = (props: SwitchInputBootStrapProps) => {
   const {
     label = 'SwitchInput',
-    name,
+    source,
     values,
     value,
     handleChange,
@@ -28,9 +28,9 @@ const SwitchInputBootStrap = (props: SwitchInputBootStrapProps) => {
     <FormControlLabel
       control={
         <Switch
-          name={name}
+          name={source}
           value={value}
-          checked={values[name]}
+          checked={values[source]}
           onChange={handleChange}
           onBlur={handleBlur}
           required={required}

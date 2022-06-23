@@ -1,12 +1,42 @@
+import React, { forwardRef } from 'react';
 // core
 import { useTranslate } from 'sb-core';
 // material ui
 import { TextField } from '@mui/material';
-import { TextInputBootStrapProps } from '../types';
+import NumberFormat, { InputAttributes } from 'react-number-format';
+import {
+  NumberInputBootStrapProps,
+  NumberFormatBootStrapProps
+} from '../types';
+import { toNumber } from 'lodash';
 
-const TextInputBootStrap = (props: TextInputBootStrapProps) => {
+const NumberFormatBootStrap = forwardRef<
+  NumberFormat<InputAttributes>,
+  NumberFormatBootStrapProps
+>((props, ref) => {
+  const { onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={values => {
+        onChange({
+          target: {
+            name: props.name,
+            value: toNumber(values.value)
+          }
+        });
+      }}
+    />
+  );
+});
+
+NumberFormatBootStrap.displayName = 'NumberFormatBootStrap';
+
+const NumberInputBootStrap = (props: NumberInputBootStrapProps) => {
   const {
-    label = 'TextInput',
+    label = 'NumberInput',
     source,
     values,
     type,
@@ -22,7 +52,6 @@ const TextInputBootStrap = (props: TextInputBootStrapProps) => {
     className,
     startAdornment,
     endAdornment,
-    size,
     sx,
     disabled
   } = props;
@@ -31,6 +60,7 @@ const TextInputBootStrap = (props: TextInputBootStrapProps) => {
 
   return (
     <TextField
+      sx={sx}
       label={translate(label)}
       variant={variant}
       margin={margin}
@@ -48,13 +78,12 @@ const TextInputBootStrap = (props: TextInputBootStrapProps) => {
       className={className}
       InputProps={{
         autoComplete: 'off',
+        inputComponent: NumberFormatBootStrap as any,
         startAdornment,
         endAdornment
       }}
-      size={size}
-      sx={sx}
     />
   );
 };
 
-export default TextInputBootStrap;
+export default NumberInputBootStrap;

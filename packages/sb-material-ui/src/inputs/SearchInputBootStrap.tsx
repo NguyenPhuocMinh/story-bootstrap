@@ -11,7 +11,7 @@ const SearchInputBootStrap = (props: SearchInputBootStrapProps) => {
   const {
     label = 'SearchInput',
     placeholder = '',
-    name,
+    source,
     values,
     type,
     variant,
@@ -20,7 +20,8 @@ const SearchInputBootStrap = (props: SearchInputBootStrapProps) => {
     handleChange,
     handleBlur,
     handleReset,
-    className
+    className,
+    sx
   } = props;
 
   const { translate } = useTranslate();
@@ -37,16 +38,16 @@ const SearchInputBootStrap = (props: SearchInputBootStrapProps) => {
       margin={margin}
       size={size}
       type={type}
-      name={name}
+      name={source}
       onChange={handleChange}
       onBlur={handleBlur}
-      value={values[name]}
+      value={values[source]}
       className={className}
       InputProps={{
         autoComplete: 'off',
         endAdornment: (
           <InputAdornment position="end">
-            {isEmpty(values[name]) ? (
+            {isEmpty(values[source]) ? (
               <SearchIcon />
             ) : (
               <IconButton
@@ -63,6 +64,7 @@ const SearchInputBootStrap = (props: SearchInputBootStrapProps) => {
           </InputAdornment>
         )
       }}
+      sx={sx}
     />
   );
 };

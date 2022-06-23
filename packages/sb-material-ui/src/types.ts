@@ -186,13 +186,10 @@ export interface NotFoundProps {
   match: any;
 }
 
-/**
- * TextInput Props
- */
-
-export interface TextInputBootStrapProps {
+export interface CommonInputProps {
   label: string;
-  name: string;
+  placeholder: string;
+  source: string;
   values: any;
   type: any;
   variant?: VariantType;
@@ -205,19 +202,24 @@ export interface TextInputBootStrapProps {
   multiline: boolean;
   rows: number | string;
   className: any;
+  disabled: boolean;
+  size: 'medium' | 'small';
   startAdornment: any;
   endAdornment: any;
+  sx: object | any;
 }
 
-export interface SwitchInputBootStrapProps {
-  label: string;
+export interface TextInputBootStrapProps extends CommonInputProps {}
+
+export interface NumberInputBootStrapProps extends CommonInputProps {}
+
+export interface NumberFormatBootStrapProps {
+  onChange: (event: { target: { name: string; value: number } }) => void;
   name: string;
-  values: any;
+}
+
+export interface SwitchInputBootStrapProps extends CommonInputProps {
   value: any;
-  required: boolean;
-  handleChange: () => void;
-  handleBlur: () => void;
-  className: any;
   color:
     | 'default'
     | 'primary'
@@ -229,24 +231,19 @@ export interface SwitchInputBootStrapProps {
   defaultChecked: boolean;
   disabled: boolean;
   disableRipple: boolean;
-  size: 'medium' | 'small';
-  sx: object | any;
 }
 
-export interface SearchInputBootStrapProps {
-  label: string;
-  placeholder: string;
-  name: string;
-  values: any;
-  type: any;
-  variant?: VariantType;
-  margin: MarginType;
-  size: 'medium' | 'small';
-  handleChange: () => void;
-  handleBlur: () => void;
+export interface SelectInputBootStrapProps extends CommonInputProps {
+  value?: any;
+  choices?: Array<{
+    id?: string;
+    name?: string;
+  }>;
+}
+
+export interface SearchInputBootStrapProps extends CommonInputProps {
+  value: any;
   handleReset: () => void;
-  touched: boolean;
-  className: any;
 }
 
 export interface ButtonRefreshProps {
