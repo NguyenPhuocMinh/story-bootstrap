@@ -1,7 +1,7 @@
 // core
 import { useTranslate } from 'sb-core';
 // material ui
-import { MenuItem, FormControl, FormHelperText, Select } from '@mui/material';
+import { MenuItem, TextField } from '@mui/material';
 import { SelectInputBootStrapProps } from '../types';
 
 const SelectInputBootStrap = (props: SelectInputBootStrapProps) => {
@@ -26,34 +26,31 @@ const SelectInputBootStrap = (props: SelectInputBootStrapProps) => {
   const { translate } = useTranslate();
 
   return (
-    <FormControl fullWidth>
-      <Select
-        sx={sx}
-        label={translate(label)}
-        type={type}
-        name={source}
-        value={values[source]}
-        variant={variant}
-        required={required}
-        error={errors[source] && touched[source]}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        disabled={disabled}
-        className={className}
-        size={size}
-      >
-        {choices?.map(choice => {
-          return (
-            <MenuItem key={choice.id} value={choice.name}>
-              {choice.name}
-            </MenuItem>
-          );
-        })}
-      </Select>
-      <FormHelperText>
-        {errors[source] && touched[source] && errors[source]}
-      </FormHelperText>
-    </FormControl>
+    <TextField
+      sx={sx}
+      select
+      label={translate(label)}
+      type={type}
+      name={source}
+      value={values[source]}
+      variant={variant}
+      required={required}
+      error={errors[source] && touched[source]}
+      helperText={errors[source] && touched[source] && errors[source]}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      disabled={disabled}
+      className={className}
+      size={size}
+    >
+      {choices?.map(choice => {
+        return (
+          <MenuItem key={choice.id} value={choice.name}>
+            {translate(choice.name)}
+          </MenuItem>
+        );
+      })}
+    </TextField>
   );
 };
 
