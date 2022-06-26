@@ -46,7 +46,7 @@ const SelectInputBootStrap = (props: SelectInputBootStrapProps) => {
       {choices?.map(choice => {
         return (
           <MenuItem key={choice.id} value={choice.name}>
-            {translate(choice.name)}
+            {choice.name}
           </MenuItem>
         );
       })}
