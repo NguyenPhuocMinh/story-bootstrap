@@ -48,8 +48,8 @@ const ProfileBootStrap = (props: ProfileProps) => {
   const handleLogout = useCallback(
     (params: any = {}) => {
       dispatch(clearState());
-      authProvider.logout(params).then(() => {
-        notify('users.notification.logout.success', {
+      authProvider.logout(params).then((message: any) => {
+        notify(message, {
           type: 'success',
           vertical: 'bottom',
           horizontal: 'center'
